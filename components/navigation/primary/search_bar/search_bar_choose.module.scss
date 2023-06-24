@@ -1,0 +1,18 @@
+.button {
+    background-color: #ebebeb;
+    border-radius: 6px 0px 0px 6px;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    padding: 0px 8px;
+    letter-spacing: .5px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #DADADA;
+        color: black;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
