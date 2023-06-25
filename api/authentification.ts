@@ -24,11 +24,8 @@ export async function apiLogin(email: params['email'], password: params['passwor
             },
         })
         .then(response => {
-            if (response.ok) {
-                return response.json()
-            } else {
-                throw new Error()
-            }
+            if (response.ok) return response.json()
+            else throw new Error()
         })
         .then(json => {
             dispatch("SET_TOKEN", json.data.access_token);
@@ -57,11 +54,8 @@ export async function apiRegistration(
             },
         })
         .then(response => {
-            if (response.ok) {
-                return response.json()
-            } else {
-                throw new Error()
-            }
+            if (response.ok) return response.json()
+            else throw new Error()
         })
         .then(json => {
             dispatch("SET_TOKEN", json.data.access_token)
@@ -85,11 +79,8 @@ export async function apiRefreshToken(refresh_token: params['refresh_token']) {
             },
         })
         .then(response => {
-            if (response.ok) {
-                return response.json()
-            } else {
-                throw new Error()
-            }
+            if (response.ok) return response.json()
+            else throw new Error()
         })
         .then(json => {
             dispatch("SET_TOKEN", json.data.access_token);

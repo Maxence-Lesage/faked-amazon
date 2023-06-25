@@ -17,8 +17,8 @@ const createStore = (initialStore) => {
 
     const dispatch = (type, payload) => {
         switch (type) {
-            case 'SET_ARTICLES':
-                store = { ...store, articles: payload }
+            case 'SET_CATEGORIES':
+                store = { ...store, categories: payload }
                 break;
             case 'SET_TOKEN':
                 store = { ...store, token: payload }
@@ -37,8 +37,8 @@ const createStore = (initialStore) => {
     const getStore = (param) => {
         let value;
         switch (param) {
-            case 'articles':
-                value = store.articles
+            case 'categories':
+                value = store.categories
                 break;
             case 'token':
                 value = store.token
@@ -60,4 +60,4 @@ const createStore = (initialStore) => {
 }
 
 // Articles, Token, Profile, Basket
-export const [useStore, dispatch, getStore] = createStore({ articles: {}, token: "", profile: {}, basket: {} })
+export const [useStore, dispatch, getStore] = createStore({ categories: {}, token: "", profile: {}, basket: {} })
