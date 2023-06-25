@@ -60,4 +60,4 @@ const createStore = (initialStore) => {
 }
 
 // Articles, Token, Profile, Basket
-export const [useStore, dispatch, getStore] = createStore({ articles: {}, token: "e", profile: {}, basket: {} })
+export const [useStore, dispatch, getStore] = createStore({ articles: {}, token: "", profile: {}, basket: {} })
