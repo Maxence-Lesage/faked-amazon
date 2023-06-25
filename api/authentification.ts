@@ -7,6 +7,7 @@ interface params {
     number: number;
     password_repeat: string;
     refresh_token: string;
+    user_id: string;
 }
 
 /*----------*/
@@ -87,5 +88,17 @@ export async function apiRefreshToken(refresh_token: params['refresh_token']) {
             localStorage.setItem('refresh_token', json.data.refresh_token)
             return true
         })
+        .catch(() => false)
+}
+
+/*----------*/
+
+export async function apiGetSingleUser(user_id: params['user_id']) {
+    fetch(`https://api.storerestapi.com/users/${user_id}`)
+        .then(response => {
+            if (response.ok) return response.json()
+            else throw new Error()
+        })
+        .then(json => json)
         .catch(() => false)
 }
