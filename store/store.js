@@ -4,7 +4,7 @@ const createStore = (initialStore) => {
     let store = initialStore
     const listeners = new Set()
 
-    const useStore = () => {
+    const useStore = (param) => {
         const [, listener] = useState()
 
         useEffect(() => {
@@ -12,7 +12,8 @@ const createStore = (initialStore) => {
             return () => listeners.delete(listener)
         }, [])
 
-        return store
+        const value = param ? getStore(param) : getStore()
+        return value
     }
 
     const dispatch = (type, payload) => {
@@ -59,5 +60,4 @@ const createStore = (initialStore) => {
     return [useStore, dispatch, getStore]
 }
 
-// Articles, Token, Profile, Basket
 export const [useStore, dispatch, getStore] = createStore({ categories: {}, token: "", profile: {}, basket: {} })
