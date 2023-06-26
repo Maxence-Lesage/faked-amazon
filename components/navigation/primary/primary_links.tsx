@@ -1,5 +1,29 @@
 import React from "react";
-import styles from "./primary_links.module.scss";
+import styled from "@emotion/styled";
+
+const PrimaryLinksContainer = styled('div')({
+    display: 'flex',
+    alignItems: 'flex-end',
+    gap: '5px',
+})
+
+const Special = styled('div')({
+    color: '#fff',
+})
+
+const Text1 = styled('p')({
+    color: '#ccc',
+    fontSize: '12px',
+    fontFamily: 'Arial, sans - serif',
+})
+
+const Text2 = styled('p')({
+    color: '#fff',
+    fontWeight: '600',
+    fontSize: '14px',
+    letterSpacing: '.2px',
+    fontFamily: 'Arial, sans-serif',
+})
 
 interface Props {
     text1: string;
@@ -10,18 +34,18 @@ interface Props {
 
 export default function PrimaryLinks({ text1, text2, special, dropdown }: Props) {
     return (
-        <div className={styles.primary_links}>
+        <PrimaryLinksContainer>
             {special &&
-                <div className={styles.primary_links__left}>
-                    <div className={styles.special}>
+                <div>
+                    <Special>
                         {special}
-                    </div>
+                    </Special>
                 </div>
             }
-            <div className={styles.primary_links__right}>
-                <p className={styles.text1}>{text1}</p>
-                <p className={styles.text2}>{text2 + (dropdown ? " " + dropdown : "")}</p>
+            <div>
+                <Text1>{text1}</Text1>
+                <Text2>{text2 + (dropdown ? " " + dropdown : "")}</Text2>
             </div>
-        </div>
+        </PrimaryLinksContainer>
     );
 }

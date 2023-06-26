@@ -1,4 +1,11 @@
-import style from "./secondary_links.module.scss";
+import styled from "@emotion/styled";
+
+const Text = styled('div')({
+    fontSize: '14px',
+    color: 'white',
+    fontFamily: 'Arial, sans-serif',
+})
+
 
 interface Props {
     text: string;
@@ -6,8 +13,8 @@ interface Props {
 
 export default function SecondaryLinks({ text }: Props) {
     return (
-        <div className={style.secondary_links}>
-            <p className={style.text}>{text}</p>
+        <div>
+            <Text>{text}</Text>
         </div>
     );
 }
