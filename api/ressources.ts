@@ -1,5 +1,3 @@
-import { useStore, dispatch, getStore } from "../store/store";
-
 interface params {
     category: string;
     product: string;
@@ -9,63 +7,65 @@ interface params {
 /*----------*/
 
 export async function apiGetAllCategories() {
-    fetch('https://api.storerestapi.com/categories')
+    const response = fetch(`${process.env.NEXT_PUBLIC_STORE_API_URL}/categories`)
         .then(response => {
             if (response.ok) return response.json()
             else throw new Error()
         })
-        .then(json => {
-            dispatch('SET_CATEGORIES', json.data)
-            return true
-        })
+        .then(json => json.data)
         .catch(() => false)
+    return response
 }
 
 /*----------*/
 
 export async function apiGetSingleCategory(category: params['category']) {
-    fetch(`https://api.storerestapi.com/categories/${category}`)
+    const response = fetch(`${process.env.NEXT_PUBLIC_STORE_API_URL}/categories/${category}`)
         .then(response => {
             if (response.ok) return response.json()
             else throw new Error()
         })
-        .then(json => console.log(json))
+        .then(json => json.data)
         .catch(() => false)
+    return response
 }
 
 /*----------*/
 
 export async function apiGetAllProducts() {
-    fetch('https://api.storerestapi.com/products')
+    const response = fetch(`${process.env.NEXT_PUBLIC_STORE_API_URL}/products`)
         .then(response => {
             if (response.ok) return response.json()
             else throw new Error()
         })
-        .then(json => console.log(json))
+        .then(json => json.data)
         .catch(() => false)
+    return response
 }
 
 /*----------*/
 
 export async function apiGetSingleProduct(product: params['product']) {
-    fetch(`https://api.storerestapi.com/products/${product}`)
+    const response = fetch(`${process.env.NEXT_PUBLIC_STORE_API_URL}/products/${product}`)
         .then(response => {
             if (response.ok) return response.json()
             else throw new Error()
         })
-        .then(json => console.log(json))
+        .then(json => json.data)
         .catch(() => false)
+    return response
 }
 
 /*----------*/
 
 export async function apiPaginationResult(page: params['page']) {
-    fetch(`https://api.storerestapi.com/products?limit=10&page=${page}`)
+    const response = fetch(`${process.env.NEXT_PUBLIC_STORE_API_URL}/products?limit=10&page=${page}`)
         .then(response => {
             if (response.ok) return response.json()
             else throw new Error()
         })
-        .then(json => console.log(json))
+        .then(json => json.data)
         .catch(() => false)
+    return response
 }
 

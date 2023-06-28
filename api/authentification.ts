@@ -1,5 +1,3 @@
-import { useStore, dispatch, getStore } from "../store/store";
-
 interface params {
     email: string;
     password: string;
@@ -13,7 +11,7 @@ interface params {
 /*----------*/
 
 export async function apiLogin(email: params['email'], password: params['password']) {
-    fetch('https://api.storerestapi.com/auth/login',
+    const response = fetch(`${process.env.NEXT_PUBLIC_STORE_API_URL}/auth/login`,
         {
             method: 'POST',
             body: JSON.stringify({
@@ -29,18 +27,18 @@ export async function apiLogin(email: params['email'], password: params['passwor
             else throw new Error()
         })
         .then(json => {
-            dispatch("SET_TOKEN", json.data.access_token);
             localStorage.setItem('refresh_token', json.data.refresh_token)
-            return true
+            return json.data.access_token
         })
         .catch(() => false)
+    return response
 }
 
 /*----------*/
 
 export async function apiRegistration(
     name: params['name'], email: params['email'], number: params['number'], password: params['password'], password_repeat: params['password_repeat']) {
-    fetch('https://api.storerestapi.com/auth/register',
+    const response = fetch(`${process.env.NEXT_PUBLIC_STORE_API_URL}/auth/register`,
         {
             method: 'POST',
             body: JSON.stringify({
@@ -59,17 +57,17 @@ export async function apiRegistration(
             else throw new Error()
         })
         .then(json => {
-            dispatch("SET_TOKEN", json.data.access_token)
             localStorage.setItem('refresh_token', json.data.refresh_token)
-            return true
+            return json.data.access_token
         })
         .catch(() => false)
+    return response
 }
 
 /*----------*/
 
 export async function apiRefreshToken(refresh_token: params['refresh_token']) {
-    fetch('https://api.storerestapi.com/auth/refresh',
+    const response = fetch(`${process.env.NEXT_PUBLIC_STORE_API_URL}/auth/refresh`,
         {
             method: 'POST',
             body: JSON.stringify({
@@ -84,21 +82,22 @@ export async function apiRefreshToken(refresh_token: params['refresh_token']) {
             else throw new Error()
         })
         .then(json => {
-            dispatch("SET_TOKEN", json.data.access_token);
             localStorage.setItem('refresh_token', json.data.refresh_token)
-            return true
+            return json.data.access_token
         })
         .catch(() => false)
+    return response
 }
 
 /*----------*/
 
 export async function apiGetSingleUser(user_id: params['user_id']) {
-    fetch(`https://api.storerestapi.com/users/${user_id}`)
+    const response = fetch(`${process.env.NEXT_PUBLIC_STORE_API_URL}/users/${user_id}`)
         .then(response => {
             if (response.ok) return response.json()
             else throw new Error()
         })
         .then(json => json)
         .catch(() => false)
+    return response
 }
