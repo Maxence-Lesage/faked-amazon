@@ -4,11 +4,11 @@ import SearchBarChoose from "./search_bar_choose";
 const SearchBarStyled = styled('div')({
     display: 'flex',
 
-    '&:nth-child(n)': {
+    '&:nth-of-type(n)': {
         height: '45px',
     },
 
-    '&:nth-child(odd)': {
+    '&:nth-of-type(odd)': {
         border: '2px solid #131921',
 
         '&:focus': {

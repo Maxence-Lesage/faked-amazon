@@ -1,12 +1,16 @@
 import Head from "next/head";
 import PrimaryNavbar from "@/components/navigation/primary/primary_navbar";
 import SecondaryNavbar from "@/components/navigation/secondary/secondary_navbar";
-import { useStore, dispatch, getStore } from "../store/store";
-import { apiGetAllCategories } from "../api/ressources";
+import { StoreContext } from '../store/store';
+import { useContext } from 'react';
 
 export default function Home() {
+    const { state, dispatch } = useContext(StoreContext);
+    console.log(state.token);
 
-    // apiGetAllCategories()
+    function handleClick() {
+        dispatch({ type: 'SET_TOKEN', payload: 'XymA' });
+    }
 
     return (
         <>
@@ -15,6 +19,7 @@ export default function Home() {
             </Head>
             <PrimaryNavbar />
             <SecondaryNavbar />
+            <input type="button" value="CLICK ON ME" onClick={handleClick} />
         </>
     );
 }
