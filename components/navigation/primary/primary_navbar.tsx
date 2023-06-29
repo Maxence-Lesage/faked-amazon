@@ -95,7 +95,7 @@ export default function PrimaryNavbar() {
                     {!isScreenSmall && <SearchBar />}
                     <NavbarElementsWrapper>
                         <Box>
-                            <PrimaryLinks text1={text[1][0]} text2={text[1][1]} dropdown={"V"} />
+                            <PrimaryLinks text1={text[1][0]} text2={text[1][1]} dropdown={"select"} />
                         </Box>
                         {!isScreenSmall &&
                             <Box>

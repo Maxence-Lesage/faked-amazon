@@ -13,8 +13,8 @@ const Navbar = styled('nav')({
 export default function SecondaryNavbar() {
 
     const links = [
-        ["Toutes", "Meilleures ventes", "Musique", "Amazon Basics", "Service Client", "Prime", "Ebooks Kindle", "Dernière Nouveautés", "Ventes flash", "Audible", "Livres", "High-Tech"],
-        ["", "bestsellers", "music", "amazonbasics", "customer-service", "prime", "kindle-store", "new-releases", "lightning-deals", "audible", "books", "electronics"],
+        ["Meilleures ventes", "Musique", "Amazon Basics", "Service Client", "Prime", "Ebooks Kindle", "Dernière Nouveautés", "Ventes flash", "Audible", "Livres", "High-Tech"],
+        ["bestsellers", "music", "amazonbasics", "customer-service", "prime", "kindle-store", "new-releases", "lightning-deals", "audible", "books", "electronics"],
     ];
 
     const items = links[0].map((link, index) => {
@@ -23,6 +23,7 @@ export default function SecondaryNavbar() {
 
     return (
         <Navbar>
+            <Box key={0o1} link={""}><SecondaryLinks key={"0o1"} text={"Toutes"} special={"burger"} /></Box>
             {items}
         </Navbar>
     );

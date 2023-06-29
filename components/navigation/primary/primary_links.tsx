@@ -45,7 +45,7 @@ export default function PrimaryLinks({ text1, text2, special, dropdown }: Props)
             }
             <div>
                 <Text1>{text1}</Text1>
-                <Text2>{text2 + (dropdown ? " " + dropdown : "")}</Text2>
+                <Text2>{text2}</Text2>
             </div>
         </PrimaryLinksContainer>
     );
