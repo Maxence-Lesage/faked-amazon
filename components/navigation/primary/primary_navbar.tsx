@@ -4,7 +4,7 @@ import Box from "../utils/box";
 import PrimaryLinks from "./primary_links";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { SearchBar } from "./search_bar/search_bar";
+import SearchBar from "./search_bar/search_bar";
 
 const Navbar = styled('nav')({
     display: 'flex',

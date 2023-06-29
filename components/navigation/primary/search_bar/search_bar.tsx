@@ -1,26 +1,28 @@
 import styled from "@emotion/styled";
+import { useState } from "react";
 import SearchBarChoose from "./search_bar_choose";
+import SearchBarInput from "./search_bar_input";
+import SearchBarLaunch from "./search_bar_launch";
 
-const SearchBarStyled = styled('div')({
+const SearchBarStyled = styled('div')<{ isInputFocused: boolean }>(({ isInputFocused }) => ({
     display: 'flex',
+    borderRadius: '6px',
+    outline: isInputFocused ? 'solid 2px #FF9900' : 'none',
 
     '&:nth-of-type(n)': {
-        height: '45px',
+        height: '41px',
     },
+}))
 
-    '&:nth-of-type(odd)': {
-        border: '2px solid #131921',
+export default function SearchBar() {
 
-        '&:focus': {
-            borderColor: '#FF9900',
-        },
-    },
-})
+    const [isInputFocused, setInputFocused] = useState(false);
 
-export const SearchBar = () => {
     return (
-        <SearchBarStyled>
+        <SearchBarStyled isInputFocused={isInputFocused}>
             <SearchBarChoose />
+            <SearchBarInput setInputFocused={setInputFocused} />
+            <SearchBarLaunch />
         </SearchBarStyled>
     );
 }

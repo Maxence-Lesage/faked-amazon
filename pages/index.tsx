@@ -4,18 +4,14 @@ import SecondaryNavbar from "@/components/navigation/secondary/secondary_navbar"
 import { StoreContext } from '../store/store';
 import { useContext } from 'react';
 import { apiLogin } from "../api/authentification";
+import { apiGetAllCategories } from "@/api/ressources";
 
 export default function Home() {
     const { state, dispatch } = useContext(StoreContext);
 
     async function handleClick() {
-        const token = await apiLogin("marklyan@gmail.com", "simple_password");
-        console.log(token);
-        // setTimeout(() => {
-        //     console.log(token);
-        //     dispatch({ type: 'SET_TOKEN', payload: token });
-        //     console.log(state.token);
-        // }, 2000);
+        const categories = await apiGetAllCategories();
+        console.log(categories);
     }
 
     return (
