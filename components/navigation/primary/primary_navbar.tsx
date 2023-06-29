@@ -6,19 +6,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import SearchBar from "./search_bar/search_bar";
 import ShoppingCart from "./shopping_cart";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { StoreContext } from "../../../store/store";
+import SecondaryNavbar from "../secondary/secondary_navbar";
+import Delivery from "./links/delivery";
 
 const Navbar = styled('nav')({
     display: 'flex',
-    gap: '10px',
-    alignItems: 'center',
     padding: '5px 3px',
     height: '60px',
     width: '100%',
     backgroundColor: '#131921',
     "@media (max-width: 1080px)": {
-        display: 'none',
+        flexDirection: 'column',
+        height: '120px',
     }
 })
 
@@ -27,14 +28,46 @@ const StyledImage = styled(Image)({
     width: '100%',
 })
 
-const NavbarWrapper = styled('div')({
+const NavbarElementsWrapper = styled('div')({
     display: 'flex',
     height: '100%',
 })
 
+const NavbarWrapper = styled('div')({
+    display: 'flex',
+    gap: '10px',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
+    "@media (max-width: 1080px)": {
+        justifyContent: 'space-between',
+        height: '60px',
+    }
+})
+
+const SearchBarWrapper = styled('div')({
+    width: '100%',
+    height: '60px',
+})
+
 export default function PrimaryNavbar() {
 
+    const [isScreenSmall, setIsScreenSmall] = useState(false);
     const { state, } = useContext(StoreContext);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsScreenSmall(window.innerWidth < 1080);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        handleResize();
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     const text = [
         ["Bonjour", "Entrez votre adresse"],
@@ -43,33 +76,43 @@ export default function PrimaryNavbar() {
     ];
 
     if (state.token) {
-        text[0][0] = "Livrer à " + state.profile.surname;
-        text[0][1] = state.profile.address.city + " " + state.profile.address.zip;
         text[1][0] = "Bonjour " + state.profile.surname;
     }
 
     return (
-        <Navbar>
-            <NavbarWrapper>
-                <Box>
-                    <StyledImage src="/images/amazon.png" alt="amazon.fr" width={170} height={45} />
-                </Box>
-                <Box>
-                    <PrimaryLinks text1={text[0][0]} text2={text[0][1]} special={<FontAwesomeIcon icon={faLocationDot} />} />
-                </Box>
-            </NavbarWrapper>
-            <SearchBar />
-            <NavbarWrapper>
-                <Box>
-                    <PrimaryLinks text1={text[1][0]} text2={text[1][1]} dropdown={"V"} />
-                </Box>
-                <Box>
-                    <PrimaryLinks text1="Retours" text2="et commandes" />
-                </Box>
-                <Box>
-                    <PrimaryLinks text1={text[2][0]} text2={text[2][1]} special={<ShoppingCart />} />
-                </Box>
-            </NavbarWrapper>
-        </Navbar>
+        <>
+            <Navbar>
+                <NavbarWrapper>
+                    <NavbarElementsWrapper>
+                        {/* BURGER */}
+                        <Box>
+                            <StyledImage src="/images/amazon.png" alt="amazon.fr" width={170} height={45} />
+                        </Box>
+                        {!isScreenSmall &&
+                            <Delivery isScreenSmall={isScreenSmall} profile={state.profile} />
+                        }
+                    </NavbarElementsWrapper>
+                    {!isScreenSmall && <SearchBar />}
+                    <NavbarElementsWrapper>
+                        <Box>
+                            <PrimaryLinks text1={text[1][0]} text2={text[1][1]} dropdown={"V"} />
+                        </Box>
+                        {!isScreenSmall &&
+                            <Box>
+                                <PrimaryLinks text1="Retours" text2="et commandes" />
+                            </Box>
+                        }
+                        <Box>
+                            <PrimaryLinks text1={text[2][0]} text2={text[2][1]} special={<ShoppingCart />} />
+                        </Box>
+                    </NavbarElementsWrapper>
+                </NavbarWrapper>
+                {isScreenSmall && <SearchBarWrapper><SearchBar /></SearchBarWrapper>}
+            </Navbar>
+            <SecondaryNavbar />
+            {isScreenSmall &&
+                <Delivery isScreenSmall={isScreenSmall} profile={state.profile} />
+            }
+        </>
     );
 }

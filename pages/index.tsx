@@ -19,7 +19,6 @@ export default function Home() {
                 <title>Home</title>
             </Head>
             <PrimaryNavbar />
-            <SecondaryNavbar />
             <input type="button" value="CLICK ON ME" onClick={handleClick} />
         </>
     );
