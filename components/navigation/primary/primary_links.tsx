@@ -5,6 +5,7 @@ const PrimaryLinksContainer = styled('div')({
     display: 'flex',
     alignItems: 'flex-end',
     gap: '5px',
+    whiteSpace: 'nowrap',
 })
 
 const Special = styled('div')({

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 const BoxContainer = styled('div')({
   height: '100%',
@@ -15,6 +16,7 @@ const BoxContainer = styled('div')({
   },
 })
 
-export default function Box({ children }: { children: React.ReactNode }) {
-  return <BoxContainer> {children} </BoxContainer>
+export default function Box({ children, link }: { children: React.ReactNode, link?: string }) {
+  return link ? <Link href={link}> <BoxContainer> {children} </BoxContainer> </Link>
+    : <BoxContainer> {children} </BoxContainer>
 }

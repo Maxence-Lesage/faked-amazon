@@ -8,6 +8,7 @@ const SearchBarStyled = styled('div')<{ isInputFocused: boolean }>(({ isInputFoc
     display: 'flex',
     borderRadius: '6px',
     outline: isInputFocused ? 'solid 2px #FF9900' : 'none',
+    flex: '1',
 
     '&:nth-of-type(n)': {
         height: '41px',

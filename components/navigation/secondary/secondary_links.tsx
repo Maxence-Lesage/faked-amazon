@@ -4,6 +4,7 @@ const Text = styled('div')({
     fontSize: '14px',
     color: 'white',
     fontFamily: 'Arial, sans-serif',
+    whiteSpace: 'nowrap',
 })
 
 

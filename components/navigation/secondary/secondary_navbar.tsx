@@ -12,11 +12,18 @@ const Navbar = styled('nav')({
 
 export default function SecondaryNavbar() {
 
+    const links = [
+        ["Toutes", "Meilleures ventes", "Musique", "Amazon Basics", "Service Client", "Prime", "Ebooks Kindle", "Dernière Nouveautés", "Ventes flash", "Audible", "Livres", "High-Tech"],
+        ["", "bestsellers", "music", "amazonbasics", "customer-service", "prime", "kindle-store", "new-releases", "lightning-deals", "audible", "books", "electronics"],
+    ];
+
+    const items = links[0].map((link, index) => {
+        return <Box key={index} link={links[1][index]}><SecondaryLinks key={index} text={link} /></Box>
+    });
+
     return (
         <Navbar>
-            <Box>
-                <SecondaryLinks text="Meilleures ventes" />
-            </Box>
+            {items}
         </Navbar>
     );
 }
