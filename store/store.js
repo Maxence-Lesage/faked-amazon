@@ -8,7 +8,7 @@ export const StoreProvider = ({ children }) => {
         categories: {},
         token: '',
         profile: {},
-        basket: {}
+        basket: {},
     };
 
     const [state, dispatch] = useReducer(reducer, initialState);

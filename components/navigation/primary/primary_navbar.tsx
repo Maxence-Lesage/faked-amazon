@@ -5,6 +5,7 @@ import PrimaryLinks from "./primary_links";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import SearchBar from "./search_bar/search_bar";
+import ShoppingCart from "./shopping_cart";
 
 const Navbar = styled('nav')({
     display: 'flex',
@@ -21,25 +22,34 @@ const StyledImage = styled(Image)({
     width: '100%',
 })
 
+const NavbarWrapper = styled('div')({
+    display: 'flex',
+    height: '100%',
+})
+
 export default function PrimaryNavbar() {
     return (
         <Navbar>
-            <Box>
-                <StyledImage src="/images/amazon.png" alt="amazon.fr" width={170} height={45} />
-            </Box>
-            <Box>
-                <PrimaryLinks text1="Bonjour" text2="Entrez votre adresse" special={<FontAwesomeIcon icon={faLocationDot} />} />
-            </Box>
+            <NavbarWrapper>
+                <Box>
+                    <StyledImage src="/images/amazon.png" alt="amazon.fr" width={170} height={45} />
+                </Box>
+                <Box>
+                    <PrimaryLinks text1="Bonjour" text2="Entrez votre adresse" special={<FontAwesomeIcon icon={faLocationDot} />} />
+                </Box>
+            </NavbarWrapper>
             <SearchBar />
-            <Box>
-                <PrimaryLinks text1="Bonjour, Identifiez-vous" text2="Compte et listes" dropdown={"V"} />
-            </Box>
-            <Box>
-                <PrimaryLinks text1="Retours" text2="et commandes" />
-            </Box>
-            <Box>
-                <PrimaryLinks text1="" text2="Panier" special={"0"} />
-            </Box>
+            <NavbarWrapper>
+                <Box>
+                    <PrimaryLinks text1="Bonjour, Identifiez-vous" text2="Compte et listes" dropdown={"V"} />
+                </Box>
+                <Box>
+                    <PrimaryLinks text1="Retours" text2="et commandes" />
+                </Box>
+                <Box>
+                    <PrimaryLinks text1="" text2="Panier" special={<ShoppingCart />} />
+                </Box>
+            </NavbarWrapper>
         </Navbar>
     );
 }

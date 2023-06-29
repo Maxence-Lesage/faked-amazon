@@ -8,10 +8,11 @@ import { apiGetAllCategories } from "@/api/ressources";
 
 export default function Home() {
     const { state, dispatch } = useContext(StoreContext);
+    console.log(state.basket);
 
     async function handleClick() {
         const categories = await apiGetAllCategories();
-        console.log(categories);
+        dispatch({ type: 'SET_CATEGORIES', payload: categories });
     }
 
     return (
