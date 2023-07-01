@@ -21,6 +21,9 @@ const Select = styled('select')({
     '&:focus': {
         outline: 'solid 2px #FF9900',
     },
+    "@media (max-width: 1080px)": {
+        display: 'none',
+    }
 })
 
 export default function SearchBarChoose() {

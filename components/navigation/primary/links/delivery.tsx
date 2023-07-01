@@ -29,6 +29,7 @@ const FirstText = styled('p')({
     fontSize: '12px',
 
     '@media (max-width: 1080px)': {
+        fontSize: '14px',
         color: '#fff',
     }
 })
@@ -65,10 +66,10 @@ export default function Delivery({ isScreenSmall, profile }: { isScreenSmall: bo
                 :
                 (<DeliveryContainer>
                     <FontAwesomeIcon icon={faLocationDot} />
-                    <div>
+                    <TextContainer>
                         <FirstText>{text[0]}</FirstText>
                         <SecondText>{text[1]}</SecondText>
-                    </div>
+                    </TextContainer>
                 </DeliveryContainer>)
             }
         </>

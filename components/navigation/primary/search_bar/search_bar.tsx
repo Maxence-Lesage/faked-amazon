@@ -13,6 +13,12 @@ const SearchBarStyled = styled('div')<{ isInputFocused: boolean }>(({ isInputFoc
     '&:nth-of-type(n)': {
         height: '41px',
     },
+    '@media (max-width: 1080px)': {
+        padding: '0px 8px',
+        '&:nth-of-type(n)': {
+            height: '44px',
+        },
+    }
 }))
 
 export default function SearchBar() {

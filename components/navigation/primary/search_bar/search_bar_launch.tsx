@@ -16,6 +16,14 @@ const Button = styled('button')({
         outline: 'solid 2px #FF9900',
         backgroundColor: '#F3A847',
     },
+    "@media (max-width: 1080px)": {
+        borderRadius: '6px',
+        marginLeft: '-6px',
+        '&:active': {
+            outline: 'none',
+            backgroundColor: '#FEBD69',
+        },
+    }
 })
 
 const Icon = styled(FontAwesomeIcon)({

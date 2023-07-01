@@ -18,6 +18,7 @@ const Navbar = styled('nav')({
     width: '100%',
     backgroundColor: '#131921',
     "@media (max-width: 1080px)": {
+        backgroundColor: '#232F3E',
         flexDirection: 'column',
         height: '120px',
     }

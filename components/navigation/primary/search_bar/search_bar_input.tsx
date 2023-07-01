@@ -7,6 +7,9 @@ const Input = styled('input')({
     outline: 'none',
     paddingLeft: '10px',
     flex: '1',
+    "@media (max-width: 1080px)": {
+        borderRadius: '6px 0px 0px 6px',
+    }
 });
 
 export default function SearchBarInput({ setInputFocused }: { setInputFocused: Function }) {
