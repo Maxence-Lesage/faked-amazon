@@ -1,15 +1,14 @@
-import Image from "next/image";
 import styled from "@emotion/styled";
 import Box from "../utils/box";
 import PrimaryLinks from "./primary_links";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import SearchBar from "./search_bar/search_bar";
-import ShoppingCart from "./shopping_cart";
 import { useContext, useEffect, useState } from "react";
 import { StoreContext } from "../../../store/store";
 import SecondaryNavbar from "../secondary/secondary_navbar";
 import Delivery from "./links/delivery";
+import Basket from "./links/basket";
+import Logo from "./links/logo";
+import Burger from "../utils/burger";
 
 const Navbar = styled('nav')({
     display: 'flex',
@@ -20,13 +19,9 @@ const Navbar = styled('nav')({
     "@media (max-width: 1080px)": {
         backgroundColor: '#232F3E',
         flexDirection: 'column',
-        height: '120px',
+        height: '100px',
+        marginTop: '-3px',
     }
-})
-
-const StyledImage = styled(Image)({
-    height: '100%',
-    width: '100%',
 })
 
 const NavbarElementsWrapper = styled('div')({
@@ -42,13 +37,12 @@ const NavbarWrapper = styled('div')({
     height: '100%',
     "@media (max-width: 1080px)": {
         justifyContent: 'space-between',
-        height: '60px',
+        height: '50px',
     }
 })
 
 const SearchBarWrapper = styled('div')({
     width: '100%',
-    height: '60px',
 })
 
 export default function PrimaryNavbar() {
@@ -73,7 +67,6 @@ export default function PrimaryNavbar() {
     const text = [
         ["Bonjour", "Entrez votre adresse"],
         ["Bonjour, Identifiez-vous", "Compte et listes"],
-        ["", "Panier"]
     ];
 
     if (state.token) {
@@ -85,10 +78,8 @@ export default function PrimaryNavbar() {
             <Navbar>
                 <NavbarWrapper>
                     <NavbarElementsWrapper>
-                        {/* BURGER */}
-                        <Box>
-                            <StyledImage src="/images/amazon.png" alt="amazon.fr" width={170} height={45} />
-                        </Box>
+                        {isScreenSmall && <Burger box={true} />}
+                        <Logo />
                         {!isScreenSmall &&
                             <Delivery isScreenSmall={isScreenSmall} profile={state.profile} />
                         }
@@ -103,9 +94,7 @@ export default function PrimaryNavbar() {
                                 <PrimaryLinks text1="Retours" text2="et commandes" />
                             </Box>
                         }
-                        <Box>
-                            <PrimaryLinks text1={text[2][0]} text2={text[2][1]} special={<ShoppingCart />} />
-                        </Box>
+                        <Basket isScreenSmall={isScreenSmall} />
                     </NavbarElementsWrapper>
                 </NavbarWrapper>
                 {isScreenSmall && <SearchBarWrapper><SearchBar /></SearchBarWrapper>}

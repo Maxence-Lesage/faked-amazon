@@ -8,6 +8,9 @@ const Navbar = styled('nav')({
     height: '39px',
     width: '100%',
     backgroundColor: '#232F3E',
+    '@media (max-width: 1080px)': {
+        height: '45px',
+    }
 })
 
 export default function SecondaryNavbar() {

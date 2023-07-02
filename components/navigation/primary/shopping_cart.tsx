@@ -8,17 +8,21 @@ const ShoppingCartContainer = styled('div')({
     position: 'relative',
 })
 
-const Number = styled('p')({
+const Number = styled('div')({
     position: 'absolute',
-    left: '60%',
-    top: '-20%',
+    width: '20px',
+    display: 'flex',
+    justifyContent: 'center',
+    left: '40%',
+    top: '-3px',
     color: '#f08804',
     fontWeight: '600',
-    fontSize: '18px',
+    fontSize: '16px',
 })
 
 const Cart = styled(Image)({
-    margin: '0 -8px 0 0',
+    margin: '0 -7px 0 0',
+    transform: 'translateY(10%)',
 })
 
 export default function ShoppingCart() {
@@ -29,7 +33,7 @@ export default function ShoppingCart() {
     return (
         <ShoppingCartContainer>
             <Number className="number">{value}</Number>
-            <Cart className="image" src={image} alt="shopping cart" width={45} height={27} />
+            <Cart className="image" src={image} alt="shopping cart" width={40} height={27} />
         </ShoppingCartContainer>
     );
 }

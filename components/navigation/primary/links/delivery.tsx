@@ -47,7 +47,7 @@ const SecondText = styled('p')({
 })
 
 export default function Delivery({ isScreenSmall, profile }: { isScreenSmall: boolean, profile: any }) {
-    const text = profile ?
+    const text = profile.surname ?
         ["Livrer à " + profile.surname + (isScreenSmall ? " - " : ""), profile.address.city + " " + profile.address.zip] :
         ["Bonjour", "Entrez votre adresse"];
 

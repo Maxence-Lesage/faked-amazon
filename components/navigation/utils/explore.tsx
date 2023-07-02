@@ -1,16 +1,22 @@
 import styled from "@emotion/styled";
 
 const Container = styled('div')<{ isBurgerOpen: boolean }>(({ isBurgerOpen }) => ({
-    backgroundColor: "white",
     position: 'absolute',
-    left: '0px',
-    top: '0px',
-    zIndex: 11,
-    height: '100vh',
-    width: '365px',
+    left: '0',
+    top: '0',
     transform: isBurgerOpen ? 'translateX(-100%)' : 'translateX(0%)',
     transition: 'transform 0.3s ease-in-out',
+    width: '365px',
+    maxWidth: '75%',
+    zIndex: 11,
 }))
+
+
+const Browse = styled('div')({
+    backgroundColor: "white",
+    position: 'relative',
+    height: '100vh',
+})
 
 const Window = styled('div')<{ isBurgerOpen: boolean }>(({ isBurgerOpen }) => ({
     display: isBurgerOpen ? 'none' : 'block',
@@ -25,10 +31,9 @@ const Window = styled('div')<{ isBurgerOpen: boolean }>(({ isBurgerOpen }) => ({
     transition: 'transform 0.3s ease-in-out',
 }))
 
-const Cross = styled('div')<{ isBurgerOpen: boolean }>(({ isBurgerOpen }) => ({
-    display: isBurgerOpen ? 'none' : 'block',
+const Cross = styled('div')({
     position: 'absolute',
-    left: '390px',
+    left: '300px',
     top: '20px',
     zIndex: 11,
     backgroundColor: '#232F3E',
@@ -41,7 +46,7 @@ const Cross = styled('div')<{ isBurgerOpen: boolean }>(({ isBurgerOpen }) => ({
         transform: 'rotate(-45deg) translateY(-2px)',
         transformOrigin: 'right',
     }
-}))
+})
 
 const CrossLine = styled('div')({
     width: '28px',
@@ -58,13 +63,15 @@ export default function Explore({ isOpened, setOpened }: { isOpened: boolean, se
     return (
         <>
             <Container isBurgerOpen={isOpened}>
-                <h1>Explore</h1>
+                <Browse>
+                    <h1>Explore</h1>
+                    <Cross>
+                        <CrossLine />
+                        <CrossLine />
+                    </Cross>
+                </Browse>
             </Container>
             <Window isBurgerOpen={isOpened} onClick={close} />
-            <Cross isBurgerOpen={isOpened}>
-                <CrossLine />
-                <CrossLine />
-            </Cross>
         </>
     );
 }
