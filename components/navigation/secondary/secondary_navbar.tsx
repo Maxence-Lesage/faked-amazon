@@ -7,13 +7,14 @@ const Navbar = styled('nav')({
     padding: '0px 3px',
     height: '39px',
     width: '100%',
-    backgroundColor: '#232F3E',
+    backgroundColor: 'var(--color-background-nav-medium)',
     '@media (max-width: 1080px)': {
         height: '45px',
+        paddingTop: '3px',
     }
 })
 
-export default function SecondaryNavbar() {
+export default function SecondaryNavbar({ isScreenSmall }: { isScreenSmall: boolean }) {
 
     const links = [
         ["Meilleures ventes", "Musique", "Amazon Basics", "Service Client", "Prime", "Ebooks Kindle", "Dernière Nouveautés", "Ventes flash", "Audible", "Livres", "High-Tech"],
@@ -26,7 +27,9 @@ export default function SecondaryNavbar() {
 
     return (
         <Navbar>
-            <Box key={0o1} link={""}><SecondaryLinks key={"0o1"} text={"Toutes"} special={"burger"} /></Box>
+            {!isScreenSmall &&
+                <Box key={0o1} link={""}><SecondaryLinks key={"0o1"} text={"Toutes"} special={"burger"} /></Box>
+            }
             {items}
         </Navbar>
     );

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const StyledImage = styled(Image)({
     height: '100%',
-    width: '100%',
+    width: 'auto',
 })
 
 export default function Logo() {

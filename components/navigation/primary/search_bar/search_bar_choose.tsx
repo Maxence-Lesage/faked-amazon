@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 const Select = styled('select')({
-    backgroundColor: '#ebebeb',
+    backgroundColor: 'var(--color-button-native-light)',
     borderRadius: '6px 0px 0px 6px',
     color: 'rgba(0, 0, 0, 0.6)',
     fontSize: '12px',
@@ -15,11 +15,11 @@ const Select = styled('select')({
 
     '&:hover': {
         cursor: 'pointer',
-        backgroundColor: '#DADADA',
-        color: 'black',
+        backgroundColor: 'var(--color-button-native-dark)',
+        color: 'var(--color-primary)',
     },
     '&:focus': {
-        outline: 'solid 2px #FF9900',
+        outline: 'solid 2px var(--color-focus-searchbar)',
     },
     "@media (max-width: 1080px)": {
         display: 'none',

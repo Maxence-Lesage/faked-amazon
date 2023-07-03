@@ -3,25 +3,24 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Button = styled('button')({
-    backgroundColor: '#FEBD69',
-    color: '#131921',
+    backgroundColor: 'var(--color-searchbar-input)',
+    color: 'var(--color-background-nav-dark)',
     width: '45px',
     borderRadius: '0px 6px 6px 0px',
     border: 'none',
     '&:hover': {
         cursor: 'pointer',
-        backgroundColor: '#F3A847',
+        backgroundColor: 'var(--color-searchbar-input-hover)',
     },
     '&:active': {
-        outline: 'solid 2px #FF9900',
-        backgroundColor: '#F3A847',
+        outline: 'solid 2px var(--color-focus-searchbar)',
+        backgroundColor: 'var(--color-searchbar-input-hover)',
     },
     "@media (max-width: 1080px)": {
         borderRadius: '6px',
         marginLeft: '-6px',
         '&:active': {
             outline: 'none',
-            backgroundColor: '#FEBD69',
         },
     }
 })

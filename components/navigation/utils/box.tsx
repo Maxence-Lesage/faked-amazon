@@ -11,7 +11,7 @@ const BoxContainer = styled('div')({
   '&:hover': {
     cursor: 'pointer',
     '&:nth-of-type(n)': {
-      borderColor: 'white',
+      borderColor: 'var(--color-light)',
     },
   },
 })

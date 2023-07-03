@@ -7,16 +7,18 @@ const DeliveryContainer = styled('div')({
     display: 'flex',
     alignItems: 'flex-end',
     gap: '6px',
-    color: 'white',
+    color: 'var(--color-light)',
     '@media (max-width: 1080px)': {
         alignItems: 'center',
+        width: '100%',
         padding: '0 15px',
         height: '45px',
-        backgroundColor: '#37475A',
+        backgroundColor: 'var(--color-background-nav-light)',
     }
 })
 
 const TextContainer = styled('div')({
+    width: '94%',
     display: 'flex',
     flexDirection: 'column',
     '@media (max-width: 1080px)': {
@@ -25,17 +27,19 @@ const TextContainer = styled('div')({
 })
 
 const FirstText = styled('p')({
-    color: '#ccc',
+    color: 'var(--color-light-secondary)',
     fontSize: '12px',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
 
     '@media (max-width: 1080px)': {
         fontSize: '14px',
-        color: '#fff',
+        color: 'var(--color-light)',
     }
 })
 
 const SecondText = styled('p')({
-    color: '#fff',
     fontWeight: '600',
     fontSize: '14px',
     letterSpacing: '.2px',
@@ -47,9 +51,17 @@ const SecondText = styled('p')({
 })
 
 export default function Delivery({ isScreenSmall, profile }: { isScreenSmall: boolean, profile: any }) {
-    const text = profile.surname ?
-        ["Livrer à " + profile.surname + (isScreenSmall ? " - " : ""), profile.address.city + " " + profile.address.zip] :
-        ["Bonjour", "Entrez votre adresse"];
+
+    const text = ["Bonjour", "Entrez votre adresse"];
+
+    if (isScreenSmall) {
+        text[0] = "Sélectionnez votre adresse de livraison"
+        text[1] = ""
+    }
+    if (profile.surname) {
+        text[0] = "Livrer à " + profile.surname
+        text[1] = profile.address.city + " " + profile.address.zip
+    }
 
     return (
         <>
@@ -58,7 +70,9 @@ export default function Delivery({ isScreenSmall, profile }: { isScreenSmall: bo
                     <DeliveryContainer>
                         <FontAwesomeIcon icon={faLocationDot} />
                         <TextContainer>
-                            <FirstText>{text[0]}</FirstText>
+                            <FirstText>
+                                {text[0]}
+                            </FirstText>
                             <SecondText>{text[1]}</SecondText>
                         </TextContainer>
                     </DeliveryContainer>
@@ -67,8 +81,13 @@ export default function Delivery({ isScreenSmall, profile }: { isScreenSmall: bo
                 (<DeliveryContainer>
                     <FontAwesomeIcon icon={faLocationDot} />
                     <TextContainer>
-                        <FirstText>{text[0]}</FirstText>
-                        <SecondText>{text[1]}</SecondText>
+                        <FirstText>
+                            {text[0]}
+                        </FirstText>
+                        <SecondText>
+                            {profile.surname ? <span>&nbsp;-&nbsp;</span> : null}
+                            {text[1]}
+                        </SecondText>
                     </TextContainer>
                 </DeliveryContainer>)
             }

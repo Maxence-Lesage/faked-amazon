@@ -1,24 +1,25 @@
 import styled from "@emotion/styled";
-import Box from "../utils/box";
-import PrimaryLinks from "./primary_links";
-import SearchBar from "./search_bar/search_bar";
 import { useContext, useEffect, useState } from "react";
 import { StoreContext } from "../../../store/store";
+import SearchBar from "./search_bar/search_bar";
 import SecondaryNavbar from "../secondary/secondary_navbar";
 import Delivery from "./links/delivery";
 import Basket from "./links/basket";
 import Logo from "./links/logo";
 import Burger from "../utils/burger";
+import Order from "./links/order";
+import Account from "./links/account";
 
 const Navbar = styled('nav')({
     display: 'flex',
     padding: '5px 3px',
     height: '60px',
     width: '100%',
-    backgroundColor: '#131921',
+    backgroundColor: 'var(--color-background-nav-dark)',
     "@media (max-width: 1080px)": {
-        backgroundColor: '#232F3E',
+        backgroundColor: 'var(--color-background-nav-medium)',
         flexDirection: 'column',
+        gap: '3px',
         height: '100px',
         marginTop: '-3px',
     }
@@ -37,7 +38,7 @@ const NavbarWrapper = styled('div')({
     height: '100%',
     "@media (max-width: 1080px)": {
         justifyContent: 'space-between',
-        height: '50px',
+        height: '48px',
     }
 })
 
@@ -52,7 +53,7 @@ export default function PrimaryNavbar() {
 
     useEffect(() => {
         const handleResize = () => {
-            setIsScreenSmall(window.innerWidth < 1080);
+            setIsScreenSmall(window.innerWidth <= 1080);
         };
 
         window.addEventListener('resize', handleResize);
@@ -63,15 +64,6 @@ export default function PrimaryNavbar() {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
-
-    const text = [
-        ["Bonjour", "Entrez votre adresse"],
-        ["Bonjour, Identifiez-vous", "Compte et listes"],
-    ];
-
-    if (state.token) {
-        text[1][0] = "Bonjour " + state.profile.surname;
-    }
 
     return (
         <>
@@ -86,20 +78,14 @@ export default function PrimaryNavbar() {
                     </NavbarElementsWrapper>
                     {!isScreenSmall && <SearchBar />}
                     <NavbarElementsWrapper>
-                        <Box>
-                            <PrimaryLinks text1={text[1][0]} text2={text[1][1]} dropdown={"select"} />
-                        </Box>
-                        {!isScreenSmall &&
-                            <Box>
-                                <PrimaryLinks text1="Retours" text2="et commandes" />
-                            </Box>
-                        }
+                        <Account isScreenSmall={isScreenSmall} />
+                        {!isScreenSmall && <Order />}
                         <Basket isScreenSmall={isScreenSmall} />
                     </NavbarElementsWrapper>
                 </NavbarWrapper>
                 {isScreenSmall && <SearchBarWrapper><SearchBar /></SearchBarWrapper>}
             </Navbar>
-            <SecondaryNavbar />
+            <SecondaryNavbar isScreenSmall={isScreenSmall} />
             {isScreenSmall &&
                 <Delivery isScreenSmall={isScreenSmall} profile={state.profile} />
             }

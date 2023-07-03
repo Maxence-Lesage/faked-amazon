@@ -15,7 +15,7 @@ const BurgerLineContainer = styled('div')({
 const BurgerLine = styled('div')({
     width: '18px',
     height: '2px',
-    backgroundColor: 'white',
+    backgroundColor: 'var(--color-light)',
     '@media (max-width: 1080px)': {
         width: '22px',
     }

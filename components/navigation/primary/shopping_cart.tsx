@@ -15,14 +15,20 @@ const Number = styled('div')({
     justifyContent: 'center',
     left: '40%',
     top: '-3px',
-    color: '#f08804',
+    color: 'var(--color-shopingCart-number)',
     fontWeight: '600',
     fontSize: '16px',
+    '@media (max-width: 1080px)': {
+        top: '-8px',
+    }
 })
 
 const Cart = styled(Image)({
     margin: '0 -7px 0 0',
     transform: 'translateY(10%)',
+    '@media (max-width: 1080px)': {
+        transform: 'translateY(-5%)',
+    }
 })
 
 export default function ShoppingCart() {

@@ -7,7 +7,7 @@ import SearchBarLaunch from "./search_bar_launch";
 const SearchBarStyled = styled('div')<{ isInputFocused: boolean }>(({ isInputFocused }) => ({
     display: 'flex',
     borderRadius: '6px',
-    outline: isInputFocused ? 'solid 2px #FF9900' : 'none',
+    outline: isInputFocused ? 'solid 2px var(--color-focus-searchbar)' : 'none',
     flex: '1',
 
     '&:nth-of-type(n)': {

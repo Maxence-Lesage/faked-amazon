@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 const Container = styled('div')<{ isBurgerOpen: boolean }>(({ isBurgerOpen }) => ({
+    display: 'none',
     position: 'absolute',
     left: '0',
     top: '0',
@@ -19,7 +20,7 @@ const Browse = styled('div')({
 })
 
 const Window = styled('div')<{ isBurgerOpen: boolean }>(({ isBurgerOpen }) => ({
-    display: isBurgerOpen ? 'none' : 'block',
+    display: isBurgerOpen ? 'none' : 'none',
     width: '100vw',
     height: '100vh',
     backgroundColor: 'rgba(0,0,0,0.6)',
