@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { useState } from 'react'
 import Box from './box'
-import Explore from './explore'
+import Explore from '../explorer/explore'
 
 const BurgerLineContainer = styled('div')({
     display: 'flex',
