@@ -1,6 +1,8 @@
 :root {
   --font-arial: Arial, sans-serif;
 
+  --color-page-background: #E3E6E6;
+
   --color-primary: #000000;
   --color-light: #fff;
   --color-light-secondary: #cccccc;
@@ -17,6 +19,8 @@
   --color-button-native-dark: #DADADA;
 
   --color-shopingCart-number: #f08804;
+
+  --color-chevron-border: #007185;
 }
 
 * {
@@ -28,8 +32,11 @@
 html,
 body {
   max-width: 100vw;
+  height: 100vh;
   overflow-x: hidden;
+  margin: 0 auto;
   font-family: var(--font-arial);
+  background-color: var(--color-page-background);
 }
 
 a {

@@ -5,6 +5,7 @@ import { StoreContext } from '../store/store';
 import { useContext } from 'react';
 import { apiLogin } from "../api/authentification";
 import { apiGetAllCategories } from "@/api/ressources";
+import Carrousel from "@/components/carrousel/carrousel";
 
 export default function Home() {
     const { state, dispatch } = useContext(StoreContext);
@@ -34,10 +35,12 @@ export default function Home() {
                 <title>Home</title>
             </Head>
             <PrimaryNavbar />
-            <input type="button" value="Connection" onClick={handleConnection} />
+            <Carrousel />
+            {/* <input type="button" value="Connection" onClick={handleConnection} />
             <input type="button" value="Deconnection" onClick={handleDeconnection} />
             <input type="button" value="Add Item" onClick={handleAddItem} />
-            <input type="button" value="Remove Item" onClick={handleRemoveItem} />
+            <input type="button" value="Remove Item" onClick={handleRemoveItem} /> */}
+
         </>
     );
 }
