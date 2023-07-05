@@ -34,20 +34,25 @@ const Container = styled('button')({
     }
 })
 
-export default function CarrouselChevron({ type }: { type: 'left' | 'right' }) {
+export default function CarrouselChevron({ type, current, setCurrent, setDirection }: { type: 'left' | 'right', current: number, setCurrent: Function, setDirection: Function }) {
+
+    function handleClick(number: number, direction: string) {
+        setCurrent(current + number);
+        setDirection(direction);
+    }
 
     return (
         <>
             {
                 type === 'left' ?
                     <ChevronLeft>
-                        <Container>
+                        <Container onClick={() => handleClick(-1, "left")}>
                             <Chevron direction="left" />
                         </Container>
                     </ChevronLeft>
                     :
                     <ChevronRight>
-                        <Container>
+                        <Container onClick={() => handleClick(1, "right")}>
                             <Chevron direction="right" />
                         </Container>
                     </ChevronRight>

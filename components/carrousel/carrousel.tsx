@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import CarrouselContent from "./carrousel_content";
 import CarrouselChevron from "./carrousel_chevron";
+import { useState } from "react";
 
 const CarrouselContainer = styled('div')({
     position: 'relative',
@@ -19,11 +20,16 @@ const CarrouselContainer = styled('div')({
 
 export default function Carrousel() {
 
+    const [current, setCurrent] = useState(0);
+    const [direction, setDirection] = useState("none");
+
+
+
     return (
         <CarrouselContainer>
-            <CarrouselChevron type="left" />
-            <CarrouselChevron type="right" />
-            <CarrouselContent />
+            <CarrouselChevron type="left" current={current} setCurrent={setCurrent} setDirection={setDirection} />
+            <CarrouselChevron type="right" current={current} setCurrent={setCurrent} setDirection={setDirection} />
+            <CarrouselContent current={current} setCurrent={setCurrent} direction={direction} setDirection={setDirection} />
         </CarrouselContainer>
     )
 }
