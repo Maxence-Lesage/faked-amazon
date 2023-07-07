@@ -6,7 +6,9 @@ const Container = styled('div')({
 })
 
 const Arrow = styled('div')<{ direction: string }>(({ direction }) => ({
-    transform: direction === 'left' ? 'rotate(0deg)' : 'rotate(180deg) translate(0px, -33px)',
+    width: '100%',
+    height: '100%',
+    transform: direction === 'left' ? 'rotate(0deg)' : 'rotate(180deg)',
 }))
 
 const ArrowBlack = styled('div')({
@@ -48,6 +50,7 @@ const ArrowWhite = styled('div')({
 })
 
 export default function Chevron({ direction }: { direction: 'left' | 'right' }) {
+
     return (
         <Container>
             <Arrow direction={direction}>

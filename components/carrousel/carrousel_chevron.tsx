@@ -11,7 +11,7 @@ const ChevronLeft = styled('div')({
 const ChevronRight = styled('div')({
     position: 'absolute',
     top: '0',
-    right: 'calc(2px + 16.66%)',
+    right: '0',
     zIndex: 1,
 })
 
@@ -34,25 +34,20 @@ const Container = styled('button')({
     }
 })
 
-export default function CarrouselChevron({ type, current, setCurrent, setDirection }: { type: 'left' | 'right', current: number, setCurrent: Function, setDirection: Function }) {
-
-    function handleClick(number: number, direction: string) {
-        setCurrent(current + number);
-        setDirection(direction);
-    }
+export default function CarrouselChevron({ type, click }: { type: string, click: Function }) {
 
     return (
         <>
             {
                 type === 'left' ?
                     <ChevronLeft>
-                        <Container onClick={() => handleClick(-1, "left")}>
+                        <Container onClick={() => click()}>
                             <Chevron direction="left" />
                         </Container>
                     </ChevronLeft>
                     :
                     <ChevronRight>
-                        <Container onClick={() => handleClick(1, "right")}>
+                        <Container onClick={() => click()}>
                             <Chevron direction="right" />
                         </Container>
                     </ChevronRight>
