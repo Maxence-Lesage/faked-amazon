@@ -31,7 +31,11 @@ const Container = styled('button')({
     "&:focus": {
         outline: 'solid var(--color-light) 2px',
         borderColor: 'var(--color-chevron-border)',
+    },
+    "@media (hover: none)": {
+        display: 'none',
     }
+
 })
 
 export default function CarrouselChevron({ type, click }: { type: string, click: Function }) {

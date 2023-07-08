@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import Image from "next/image";
-import { useRef, useState, useEffect, Children } from "react";
+import { useRef, useEffect } from "react";
 import CarrouselChevron from "./carrousel_chevron";
 
 const Content = styled('div')({
@@ -23,9 +23,15 @@ const Carrousel = styled('ul')({
     margin: "0",
     transitionDuration: '.5s',
     transitionProperty: 'transform',
+    "@media (max-width: 768px)": {
+        height: '400px',
+    },
+    "@media (max-width: 479px)": {
+        height: '250px',
+    }
 })
 
-const ImageContainer = styled('div')({
+const ImageContainer = styled('picture')({
     height: '500px',
     width: 'calc(100% / 7)',
     transitionDuration: '.4s',
@@ -37,8 +43,23 @@ const ImageContainer = styled('div')({
     "& img": {
         objectFit: 'cover',
         objectPosition: 'center top',
+    },
+    "@media (max-width: 768px)": {
+        height: '400px',
+    },
+    "@media (max-width: 479px)": {
+        height: '250px',
     }
 })
+
+const EventHandler = styled('div')({
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    height: '100%',
+    width: '100%',
+})
+
 export default function CarrouselContent() {
     const containerRef = useRef<HTMLDivElement>(null);
     const carrouselRef = useRef<HTMLUListElement>(null);
@@ -108,33 +129,69 @@ export default function CarrouselContent() {
         }
     }
 
+    //---------------------//
+
+    var touchStartX = 0;
+    var touchEndX = 0;
+
+    function handleTouchStart(event: any) {
+        touchStartX = event.touches[0].clientX;
+    }
+
+    function handleTouchEnd(event: any) {
+        touchEndX = event.changedTouches[0].clientX;
+        handleCarouselNavigation();
+    }
+
+    function handleCarouselNavigation() {
+        var minSwipeDistance = 50; // Distance minimale de glissement pour déclencher la navigation du carrousel
+
+        var swipeDistance = touchStartX - touchEndX;
+
+        if (swipeDistance > minSwipeDistance) {
+            // Glissement vers la gauche, navigation suivante
+            moveCarousel('next');
+        } else if (swipeDistance < -minSwipeDistance) {
+            // Glissement vers la droite, navigation précédente
+            moveCarousel('prev');
+        }
+    }
+
     return (
         <Content ref={containerRef}>
             <div>
                 <Carrousel ref={carrouselRef}>
                     <ImageContainer>
+                        <source srcSet="/images/carrousel/one.min.jpg" media="(max-width: 768px)" />
                         <Image src="/images/carrousel/one.jpg" alt="test" fill={true} />
                     </ImageContainer>
                     <ImageContainer>
+                        <source srcSet="/images/carrousel/two.min.jpg" media="(max-width: 768px)" />
                         <Image src="/images/carrousel/two.jpg" alt="test" fill={true} />
                     </ImageContainer>
                     <ImageContainer>
+                        <source srcSet="/images/carrousel/three.min.jpg" media="(max-width: 768px)" />
                         <Image src="/images/carrousel/three.jpg" alt="test" fill={true} />
                     </ImageContainer>
                     <ImageContainer>
+                        <source srcSet="/images/carrousel/four.min.jpg" media="(max-width: 768px)" />
                         <Image src="/images/carrousel/four.jpg" alt="test" fill={true} />
                     </ImageContainer>
                     <ImageContainer>
+                        <source srcSet="/images/carrousel/five.min.jpg" media="(max-width: 768px)" />
                         <Image src="/images/carrousel/five.jpg" alt="test" fill={true} />
                     </ImageContainer>
                     <ImageContainer>
+                        <source srcSet="/images/carrousel/six.min.jpg" media="(max-width: 768px)" />
                         <Image src="/images/carrousel/six.jpg" alt="test" fill={true} />
                     </ImageContainer>
                     <ImageContainer>
+                        <source srcSet="/images/carrousel/seven.min.jpg" media="(max-width: 768px)" />
                         <Image src="/images/carrousel/seven.jpg" alt="test" fill={true} />
                     </ImageContainer>
                 </Carrousel>
             </div>
+            <EventHandler onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} />
             <CarrouselChevron type="left" click={moveCarousel} />
             <CarrouselChevron type="right" click={moveCarousel} />
         </Content>
