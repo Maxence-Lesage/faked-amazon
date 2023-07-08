@@ -8,7 +8,7 @@ const Content = styled('div')({
     height: '100%',
     position: 'relative',
 
-    "& div:first-child": {
+    "& div:first-of-type": {
         overflow: 'hidden',
         maxWidth: '100%',
         margin: '0',
@@ -74,56 +74,35 @@ export default function CarrouselContent() {
 
     }, [])
 
-    function next() {
+    function moveCarousel(direction: string) {
         const carouselItem = carrouselRef.current;
         if (carouselItem) {
             const slides = Array.from(carouselItem.children);
             if (translationComplete === true) {
                 translationComplete = false;
-                let outerIndex = (index) % amount;
-                index++;
-                for (let i = 0; i < amount; i++) {
-                    const slide = slides[i] as HTMLElement;
-                    if (slide) {
-                        slide.style.opacity = '1';
-                        slide.style.transform = 'translateX(' + (currTransl[i] - moveOffset) + 'px)';
-                        currTransl[i] = currTransl[i] - moveOffset;
+                if (direction === 'prev') {
+                    index--;
+                    if (index === -1) {
+                        index = amount - 1;
                     }
-                }
-                const outerSlide = slides[outerIndex] as HTMLElement;
-                if (outerSlide) {
-                    outerSlide.style.transform = 'translateX(' + (currTransl[outerIndex] + (moveOffset * amount)) + 'px)';
-                    outerSlide.style.opacity = '0';
-                    currTransl[outerIndex] = currTransl[outerIndex] + moveOffset * (amount);
-                }
-            }
-        }
-    }
-
-    function prev() {
-        const carouselItem = carrouselRef.current;
-        if (carouselItem) {
-            const slides = Array.from(carouselItem.children);
-            if (translationComplete === true) {
-                translationComplete = false;
-                index--;
-                if (index == -1) {
-                    index = amount - 1;
                 }
                 const outerIndex = (index) % amount;
+                if (direction === 'next') {
+                    index++;
+                }
                 for (let i = 0; i < amount; i++) {
                     const slide = slides[i] as HTMLElement;
                     if (slide) {
                         slide.style.opacity = '1';
-                        slide.style.transform = 'translateX(' + (currTransl[i] + moveOffset) + 'px)';
-                        currTransl[i] = currTransl[i] + moveOffset;
+                        slide.style.transform = 'translateX(' + (currTransl[i] + (moveOffset * (direction === 'next' ? -1 : 1))) + 'px)';
+                        currTransl[i] = currTransl[i] + (moveOffset * (direction === 'next' ? -1 : 1));
                     }
                 }
                 const outerSlide = slides[outerIndex] as HTMLElement;
                 if (outerSlide) {
-                    outerSlide.style.transform = 'translateX(' + (currTransl[outerIndex] - (moveOffset * amount)) + 'px)';
+                    outerSlide.style.transform = 'translateX(' + (currTransl[outerIndex] - (moveOffset * amount * (direction === 'next' ? -1 : 1))) + 'px)';
                     outerSlide.style.opacity = '0';
-                    currTransl[outerIndex] = currTransl[outerIndex] - moveOffset * (amount);
+                    currTransl[outerIndex] = currTransl[outerIndex] - (moveOffset * amount * (direction === 'next' ? -1 : 1));
                 }
             }
         }
@@ -156,8 +135,8 @@ export default function CarrouselContent() {
                     </ImageContainer>
                 </Carrousel>
             </div>
-            <CarrouselChevron type="left" click={prev} />
-            <CarrouselChevron type="right" click={next} />
+            <CarrouselChevron type="left" click={moveCarousel} />
+            <CarrouselChevron type="right" click={moveCarousel} />
         </Content>
     )
 }

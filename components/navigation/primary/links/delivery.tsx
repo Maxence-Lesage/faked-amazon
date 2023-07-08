@@ -8,6 +8,7 @@ const DeliveryContainer = styled('div')({
     alignItems: 'flex-end',
     gap: '6px',
     color: 'var(--color-light)',
+    whiteSpace: 'nowrap',
     '@media (max-width: 1080px)': {
         alignItems: 'center',
         width: '100%',

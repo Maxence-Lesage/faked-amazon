@@ -41,13 +41,13 @@ export default function CarrouselChevron({ type, click }: { type: string, click:
             {
                 type === 'left' ?
                     <ChevronLeft>
-                        <Container onClick={() => click()}>
+                        <Container onClick={() => click("prev")}>
                             <Chevron direction="left" />
                         </Container>
                     </ChevronLeft>
                     :
                     <ChevronRight>
-                        <Container onClick={() => click()}>
+                        <Container onClick={() => click("next")}>
                             <Chevron direction="right" />
                         </Container>
                     </ChevronRight>

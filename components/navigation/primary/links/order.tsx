@@ -5,6 +5,7 @@ const PrimaryLinksContainer = styled('div')({
     display: 'flex',
     flexDirection: 'column',
     color: 'var(--color-light)',
+    whiteSpace: 'nowrap',
 })
 
 const Text1 = styled('p')({
