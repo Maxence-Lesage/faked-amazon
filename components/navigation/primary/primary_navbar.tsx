@@ -67,7 +67,7 @@ export default function PrimaryNavbar() {
 
     return (
         <>
-            <Navbar>
+            <Navbar id="navbar">
                 <NavbarWrapper>
                     <NavbarElementsWrapper>
                         {isScreenSmall && <Burger box={true} />}

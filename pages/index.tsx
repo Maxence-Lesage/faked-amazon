@@ -6,6 +6,7 @@ import { useContext } from 'react';
 import { apiLogin } from "../api/authentification";
 import { apiGetAllCategories } from "@/api/ressources";
 import Carrousel from "@/components/carrousel/carrousel";
+import Footer from "@/components/footer/footer";
 
 export default function Home() {
     const { state, dispatch } = useContext(StoreContext);
@@ -36,6 +37,7 @@ export default function Home() {
             </Head>
             <PrimaryNavbar />
             <Carrousel />
+            <Footer />
             {/* <input type="button" value="Connection" onClick={handleConnection} />
             <input type="button" value="Deconnection" onClick={handleDeconnection} />
             <input type="button" value="Add Item" onClick={handleAddItem} />

@@ -130,9 +130,10 @@ export default function CarrouselContent() {
     }
 
     //---------------------//
+    // Mobile only events //
 
-    var touchStartX = 0;
-    var touchEndX = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
 
     function handleTouchStart(event: any) {
         touchStartX = event.touches[0].clientX;
@@ -144,18 +145,17 @@ export default function CarrouselContent() {
     }
 
     function handleCarouselNavigation() {
-        var minSwipeDistance = 50; // Distance minimale de glissement pour déclencher la navigation du carrousel
-
-        var swipeDistance = touchStartX - touchEndX;
+        const minSwipeDistance = 50;
+        const swipeDistance = touchStartX - touchEndX;
 
         if (swipeDistance > minSwipeDistance) {
-            // Glissement vers la gauche, navigation suivante
             moveCarousel('next');
         } else if (swipeDistance < -minSwipeDistance) {
-            // Glissement vers la droite, navigation précédente
             moveCarousel('prev');
         }
     }
+
+    //---------------------//
 
     return (
         <Content ref={containerRef}>
