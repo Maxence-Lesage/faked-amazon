@@ -163,31 +163,31 @@ export default function CarrouselContent() {
                 <Carrousel ref={carrouselRef}>
                     <ImageContainer>
                         <source srcSet="/images/carrousel/one.min.jpg" media="(max-width: 768px)" />
-                        <Image src="/images/carrousel/one.jpg" alt="test" fill={true} />
+                        <Image src="/images/carrousel/one.jpg" alt="Jack Ryan last season on prime video" fill={true} priority={true} />
                     </ImageContainer>
                     <ImageContainer>
                         <source srcSet="/images/carrousel/two.min.jpg" media="(max-width: 768px)" />
-                        <Image src="/images/carrousel/two.jpg" alt="test" fill={true} />
+                        <Image src="/images/carrousel/two.jpg" alt="Flash sells 11 and 12 July for prime members" fill={true} />
                     </ImageContainer>
                     <ImageContainer>
                         <source srcSet="/images/carrousel/three.min.jpg" media="(max-width: 768px)" />
-                        <Image src="/images/carrousel/three.jpg" alt="test" fill={true} />
+                        <Image src="/images/carrousel/three.jpg" alt="Our recyclable paper bags" fill={true} />
                     </ImageContainer>
                     <ImageContainer>
                         <source srcSet="/images/carrousel/four.min.jpg" media="(max-width: 768px)" />
-                        <Image src="/images/carrousel/four.jpg" alt="test" fill={true} />
+                        <Image src="/images/carrousel/four.jpg" alt="Smart air quality monitoring with amazon smart" fill={true} />
                     </ImageContainer>
                     <ImageContainer>
                         <source srcSet="/images/carrousel/five.min.jpg" media="(max-width: 768px)" />
-                        <Image src="/images/carrousel/five.jpg" alt="test" fill={true} />
+                        <Image src="/images/carrousel/five.jpg" alt="Add Alexa to your nightstand with Echo Dot" fill={true} />
                     </ImageContainer>
                     <ImageContainer>
                         <source srcSet="/images/carrousel/six.min.jpg" media="(max-width: 768px)" />
-                        <Image src="/images/carrousel/six.jpg" alt="test" fill={true} />
+                        <Image src="/images/carrousel/six.jpg" alt="Pay in four installments free of charge with amazon prime" fill={true} />
                     </ImageContainer>
                     <ImageContainer>
                         <source srcSet="/images/carrousel/seven.min.jpg" media="(max-width: 768px)" />
-                        <Image src="/images/carrousel/seven.jpg" alt="test" fill={true} />
+                        <Image src="/images/carrousel/seven.jpg" alt="Spend 50 euros and save 15% on everyday essentials" fill={true} />
                     </ImageContainer>
                 </Carrousel>
             </div>
