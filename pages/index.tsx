@@ -19,7 +19,6 @@ export default function Home() {
     async function handleDeconnection() {
         dispatch({ type: 'SET_TOKEN', payload: "" });
         dispatch({ type: 'SET_PROFILE', payload: {} });
-
     }
 
     async function handleAddItem() {
@@ -39,8 +38,8 @@ export default function Home() {
             <Carrousel />
             <Footer />
             {/* <input type="button" value="Connection" onClick={handleConnection} />
-            <input type="button" value="Deconnection" onClick={handleDeconnection} />
-            <input type="button" value="Add Item" onClick={handleAddItem} />
+            <input type="button" value="Deconnection" onClick={handleDeconnection} /> */}
+            {/* <input type="button" value="Add Item" onClick={handleAddItem} />
             <input type="button" value="Remove Item" onClick={handleRemoveItem} /> */}
 
         </>
