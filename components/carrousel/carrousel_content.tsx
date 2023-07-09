@@ -18,7 +18,7 @@ const Content = styled('div')({
 const Carrousel = styled('ul')({
     position: "relative",
     width: "calc(100dvw * 7)",
-    height: "500px",
+    height: "700px",
     padding: "0",
     margin: "0",
     transitionDuration: '.5s',
@@ -32,7 +32,7 @@ const Carrousel = styled('ul')({
 })
 
 const ImageContainer = styled('picture')({
-    height: '500px',
+    height: '700px',
     width: 'calc(100% / 7)',
     transitionDuration: '.4s',
     transitionProperty: 'transform',
