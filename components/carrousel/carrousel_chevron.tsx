@@ -22,14 +22,15 @@ const Container = styled('button')({
     height: '250px',
     width: '80px',
     backgroundColor: 'transparent',
-    border: 'solid 2px transparent',
+    border: 'solid 3px transparent',
     borderRadius: '4px',
+    marginTop: '3px',
 
     "&:hover": {
         cursor: 'pointer',
     },
     "&:focus": {
-        outline: 'solid var(--color-light) 2px',
+        outline: 'solid var(--color-light) 3px',
         borderColor: 'var(--color-chevron-border)',
     },
     "@media (hover: none)": {

@@ -4,7 +4,7 @@ import Card from "../card/card";
 const Container = styled("div")({
     position: "relative",
     display: "grid",
-    marginTop: "-450px",
+    marginTop: "-344px",
     gridTemplateColumns: "repeat(auto-fill, minmax(23%, auto))",
     width: "100%",
     justifyContent: "center",
@@ -13,7 +13,7 @@ const Container = styled("div")({
     zIndex: 50,
     "@media (max-width: 1200px)": {
         gridTemplateColumns: "repeat(auto-fill, minmax(31.33%, auto))",
-        gap: "25px 2%",
+        gap: "20px 2%",
         padding: "0 10px 20px 10px",
         "& > div:nth-of-type(15)": {
             display: "none",

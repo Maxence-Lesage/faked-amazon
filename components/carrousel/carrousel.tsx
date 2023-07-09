@@ -3,7 +3,7 @@ import CarrouselContent from "./carrousel_content";
 
 const CarrouselContainer = styled('div')({
     position: 'relative',
-    height: '700px',
+    height: '600px',
     width: '100%',
     "&::after": {
         position: 'absolute',
