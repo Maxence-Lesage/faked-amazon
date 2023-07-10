@@ -51,6 +51,10 @@ const SecondText = styled('p')({
     }
 })
 
+const Icon = styled(FontAwesomeIcon)({
+    height: '15px', marginBottom: '3px',
+})
+
 export default function Delivery({ isScreenSmall, profile }: { isScreenSmall: boolean, profile: any }) {
 
     const text = ["Bonjour", "Entrez votre adresse"];
@@ -69,7 +73,7 @@ export default function Delivery({ isScreenSmall, profile }: { isScreenSmall: bo
             {!isScreenSmall ? (
                 <Box>
                     <DeliveryContainer>
-                        <FontAwesomeIcon icon={faLocationDot} />
+                        <Icon icon={faLocationDot} />
                         <TextContainer>
                             <FirstText>
                                 {text[0]}
@@ -80,7 +84,7 @@ export default function Delivery({ isScreenSmall, profile }: { isScreenSmall: bo
                 </Box>)
                 :
                 (<DeliveryContainer>
-                    <FontAwesomeIcon icon={faLocationDot} />
+                    <Icon icon={faLocationDot} />
                     <TextContainer>
                         <FirstText>
                             {text[0]}

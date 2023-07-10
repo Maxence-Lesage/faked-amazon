@@ -26,7 +26,8 @@ const Button = styled('button')({
 })
 
 const Icon = styled(FontAwesomeIcon)({
-    fontSize: '20px',
+    marginTop: '3px',
+    height: '20px',
 })
 
 export default function SearchBarLaunch() {
