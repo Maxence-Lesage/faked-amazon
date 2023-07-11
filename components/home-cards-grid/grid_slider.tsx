@@ -3,7 +3,9 @@ import json from "../../api/gridSlider.json";
 import Link from "next/link";
 import Image from "next/image";
 import GridSliderChevron from "./grid_slider_chevron";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import HorizontalScrollBar from "../utils/horizontal_scrollbar";
+import { transform } from "typescript";
 
 interface Ids {
     readonly 1: string,
@@ -42,37 +44,26 @@ const SeeMore = styled(Link)({
 
 const Carousel = styled("div")({
     position: "relative",
-    display: "flex",
     height: "fit-content",
     width: "100%",
     marginTop: "15px",
-    overflowX: "hidden",
-    gap: "8px",
+    overflow: "hidden",
     "&:hover .grid-slider-chevron": {
         opacity: "0.8",
-    }
+    },
 })
 
-const ScrollBarContainer = styled("div")({
-    width: "100%",
-    marginTop: "5px",
-})
-
-const ScrollBar = styled("div")({
-    height: "5px",
-    width: "20%",
-    backgroundColor: "gray",
-    borderRadius: "5px",
-    "&:hover": {
-        backgroundColor: "var(--color-primary)",
-        cursor: "pointer",
-    }
-})
+const CarouselWrapper = styled("div")<{ amount: number }>(({ amount }) => ({
+    display: "flex",
+    gap: "8px",
+    width: "fit-content",
+    transform: `translateX(-${amount}%)`,
+}))
 
 export default function GridSlider({ id }: { id: keyof Ids }) {
 
-    const scrollBarRef = useRef<HTMLDivElement>(null);
     const carouselRef = useRef<HTMLDivElement>(null);
+    const [amount, setAmount] = useState(0);
 
     const data = json[id];
     const title = data.title;
@@ -82,71 +73,31 @@ export default function GridSlider({ id }: { id: keyof Ids }) {
         return <Link key={id} href={article.link}><Image key={id} src={"/" + article.src} alt={article.alt} width={200} height={200} /></Link>
     })
 
-    let initialMousePosition = 0;
-    let minWidth = 0;
-    let maxWidth = 0;
-    let scrollBarWidth = 233;
-
-    if (carouselRef.current != null && scrollBarRef.current != null) {
-        minWidth = Math.round(carouselRef.current.getBoundingClientRect().left);
-        maxWidth = Math.round(carouselRef.current.getBoundingClientRect().right);
-        scrollBarWidth = Math.round(scrollBarRef.current.getBoundingClientRect().width);
+    function getMinWidth() {
+        if (carouselRef.current) return Math.round(carouselRef.current.getBoundingClientRect().left);
+        else return 40;
     }
 
-    let plus = 0;
-
-    function barFocus(e: any) {
-        initialMousePosition = e.clientX;
-        window.addEventListener("mousemove", scroll);
-        window.addEventListener("mouseup", reset);
-        document.body.style.userSelect = "none";
-        if (scrollBarRef.current) {
-            const scrollBarPosLeft = Math.round(scrollBarRef.current.getBoundingClientRect().left);
-            plus = initialMousePosition - scrollBarPosLeft;
-        }
+    function getWrapperWidth() {
+        if (carouselRef.current) {
+            return Math.round(carouselRef.current.children[0].getBoundingClientRect().width);
+        } else return 0;
     }
 
-    let amount = 0;
-
-    function addTranslate(x: number) {
-        if (scrollBarRef.current) {
-            scrollBarRef.current.style.transform = "translateX(" + x + "px)";
-        }
-    }
-
-    function scroll(e: any) {
-        if (initialMousePosition !== 0) {
-            const newPos = e.clientX;
-            if (scrollBarRef.current) {
-                // const scrollBarPosLeft = Math.round(scrollBarRef.current.getBoundingClientRect().left);
-                // const scrollBarPosRight = Math.round(scrollBarRef.current.getBoundingClientRect().right);
-                // if ((scrollBarPosLeft + newPos - initialMousePosition) >= minWidth && (scrollBarPosRight + newPos - initialMousePosition) <= maxWidth) {
-                amount += ((newPos - minWidth) - amount - plus);
-                addTranslate(amount);
-                // }
-            }
-        }
-    }
-
-    function reset() {
-        initialMousePosition = 0;
-        window.removeEventListener("mousemove", scroll);
-        window.removeEventListener("mouseup", reset);
-        document.body.style.userSelect = "auto";
-    }
+    console.log(amount);
 
     return (
         <Container>
             <Title>{title}</Title>
             {link && <SeeMore href={link}>Voir plus</SeeMore>}
             <Carousel ref={carouselRef}>
-                {articlesList}
+                <CarouselWrapper amount={amount}>
+                    {articlesList}
+                </CarouselWrapper>
                 <GridSliderChevron direction="left" />
                 <GridSliderChevron direction="right" />
             </Carousel>
-            <ScrollBarContainer>
-                <ScrollBar ref={scrollBarRef} onMouseDown={(e) => barFocus(e)} />
-            </ScrollBarContainer>
+            <HorizontalScrollBar minWidth={getMinWidth()} setAmount={setAmount} />
         </Container>
     )
 }
