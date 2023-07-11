@@ -75,23 +75,19 @@ export default function CarrouselContent() {
     }
 
     useEffect(() => {
-        const handleLoad = () => {
-            const carrouselContainer = containerRef.current;
-            const carouselItem = carrouselRef.current;
-            if (carrouselContainer && carouselItem) {
-                amount = Array.from(carouselItem.children).length;
-                moveOffset = parseInt(window.getComputedStyle(carrouselContainer).width, 10);
-                carouselItem.style.width = (amount * moveOffset) + 'px';
-                carouselItem.insertBefore(carouselItem.children[6], carouselItem.children[0])
+        const carrouselContainer = containerRef.current;
+        const carouselItem = carrouselRef.current;
+        if (carrouselContainer && carouselItem) {
+            amount = Array.from(carouselItem.children).length;
+            moveOffset = parseInt(window.getComputedStyle(carrouselContainer).width, 10);
+            carouselItem.style.width = (amount * moveOffset) + 'px';
+            carouselItem.insertBefore(carouselItem.children[6], carouselItem.children[0])
 
-                for (let i = 0; i < amount; i++) {
-                    currTransl[i] = -moveOffset;
-                    Array.from(carouselItem.children)[i].addEventListener("transitionend", transitionCompleted, true);
-                }
+            for (let i = 0; i < amount; i++) {
+                currTransl[i] = -moveOffset;
+                Array.from(carouselItem.children)[i].addEventListener("transitionend", transitionCompleted, true);
             }
         }
-
-        handleLoad();
 
     }, [])
 

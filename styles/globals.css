@@ -23,6 +23,9 @@
   --color-shopingCart-number: #f08804;
 
   --color-chevron-border: #007185;
+
+  --color-href: #007e94;
+  --color-href-hover: #c32d00;
 }
 
 * {
