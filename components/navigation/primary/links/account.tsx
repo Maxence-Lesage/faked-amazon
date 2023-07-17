@@ -4,6 +4,7 @@ import Box from "../../utils/box";
 import { StoreContext } from "@/store/store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faChevronRight, faUser } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 const LinkContainer = styled('div')({
     display: 'flex',
@@ -66,20 +67,22 @@ export default function Account({ isScreenSmall }: { isScreenSmall: boolean }) {
         (isScreenSmall ? "Se connecter" : "Bonjour, Identifiez-vous");
 
     return (
-        <Box>
-            <LinkContainer>
-                <TextContainer>
-                    <Text1Wrapper>
-                        <Text1>{text1}</Text1>
-                        {isScreenSmall && <ChevronLeft icon={faChevronRight} />}
-                    </Text1Wrapper>
-                    {isScreenSmall && <UserIcon icon={faUser} />}
-                </TextContainer>
-                <TextContainer>
-                    <Text2>{isScreenSmall ? "" : "Compte et listes"}</Text2>
-                    {!isScreenSmall && <CaretDown icon={faCaretDown} />}
-                </TextContainer>
-            </LinkContainer>
-        </Box>
+        <Link href={state.token ? "/account" : "/user/sign-in"}>
+            <Box>
+                <LinkContainer>
+                    <TextContainer>
+                        <Text1Wrapper>
+                            <Text1>{text1}</Text1>
+                            {isScreenSmall && <ChevronLeft icon={faChevronRight} />}
+                        </Text1Wrapper>
+                        {isScreenSmall && <UserIcon icon={faUser} />}
+                    </TextContainer>
+                    <TextContainer>
+                        <Text2>{isScreenSmall ? "" : "Compte et listes"}</Text2>
+                        {!isScreenSmall && <CaretDown icon={faCaretDown} />}
+                    </TextContainer>
+                </LinkContainer>
+            </Box>
+        </Link>
     )
 }

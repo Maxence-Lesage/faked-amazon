@@ -26,6 +26,16 @@
 
   --color-href: #007e94;
   --color-href-hover: #c32d00;
+
+  --color-border: hsla(0, 0%, 0%, 0.2);
+
+  --color-input-focus: rgba(0, 195, 230, 0.35);
+
+  --color-button: #f5d451;
+  --color-button-hover: #eabd41;
+  --color-button-focus: #daa53c;
+
+  --color-hypertext: #0066c0;
 }
 
 * {
