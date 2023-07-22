@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import Box from "../utils/box";
 import SecondaryLinks from "./secondary_links";
-import HorizontalScrollBar from "@/components/utils/horizontal_scrollbar";
 import { useState } from "react";
 import { off } from "process";
 
@@ -12,10 +11,11 @@ const Navbar = styled('nav')({
     height: '39px',
     width: '100%',
     backgroundColor: 'var(--color-background-nav-medium)',
+    overflow: 'hidden',
     '@media (max-width: 1080px)': {
         height: '45px',
         paddingTop: '3px',
-    }
+    },
 })
 
 const List = styled('ul')<{ amount: number }>(({ amount }) => ({
@@ -45,7 +45,6 @@ export default function SecondaryNavbar({ isScreenSmall }: { isScreenSmall: bool
                 }
                 {items}
             </List>
-            <HorizontalScrollBar minWidth={0} setAmount={setAmount} />
         </Navbar>
     );
 }

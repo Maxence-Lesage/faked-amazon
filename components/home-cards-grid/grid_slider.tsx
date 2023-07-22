@@ -4,8 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import GridSliderChevron from "./grid_slider_chevron";
 import { useRef, useState } from "react";
-import HorizontalScrollBar from "../utils/horizontal_scrollbar";
-import { transform } from "typescript";
 
 interface Ids {
     readonly 1: string,
@@ -18,6 +16,7 @@ interface Ids {
 }
 
 const Container = styled("div")({
+    position: "relative",
     width: "100%",
     height: "fit-content",
     backgroundColor: "var(--color-light)",
@@ -43,27 +42,42 @@ const SeeMore = styled(Link)({
 })
 
 const Carousel = styled("div")({
-    position: "relative",
     height: "fit-content",
     width: "100%",
     marginTop: "15px",
-    overflow: "hidden",
+    overflowX: "scroll",
+    scrollBehavior: "smooth",
     "&:hover .grid-slider-chevron": {
         opacity: "0.8",
     },
+    "&::-webkit-scrollbar": {
+        height: '7px',
+    },
+
+    "&::-webkit-scrollbar-track": {
+        background: 'transparent',
+    },
+
+    "&::-webkit-scrollbar-thumb": {
+        backgroundColor: 'white',
+        borderRadius: '20px',
+        border: 'none',
+    },
+    "&:hover::-webkit-scrollbar-thumb": {
+        backgroundColor: 'var(--color-dark)',
+    }
 })
 
-const CarouselWrapper = styled("div")<{ amount: number }>(({ amount }) => ({
+const CarouselWrapper = styled("div")({
     display: "flex",
     gap: "8px",
     width: "fit-content",
-    transform: `translateX(-${amount}%)`,
-}))
+})
 
 export default function GridSlider({ id }: { id: keyof Ids }) {
 
     const carouselRef = useRef<HTMLDivElement>(null);
-    const [amount, setAmount] = useState(0);
+    const scrollAmount = 624;
 
     const data = json[id];
     const title = data.title;
@@ -73,31 +87,29 @@ export default function GridSlider({ id }: { id: keyof Ids }) {
         return <Link key={id} href={article.link}><Image key={id} src={"/" + article.src} alt={article.alt} width={200} height={200} /></Link>
     })
 
-    function getMinWidth() {
-        if (carouselRef.current) return Math.round(carouselRef.current.getBoundingClientRect().left);
-        else return 40;
-    }
-
-    function getWrapperWidth() {
+    const handleScrollLeft = () => {
         if (carouselRef.current) {
-            return Math.round(carouselRef.current.children[0].getBoundingClientRect().width);
-        } else return 0;
-    }
+            carouselRef.current.scrollLeft -= scrollAmount;
+        }
+    };
 
-    console.log(amount);
+    const handleScrollRight = () => {
+        if (carouselRef.current) {
+            carouselRef.current.scrollLeft += scrollAmount;
+        }
+    };
 
     return (
         <Container>
             <Title>{title}</Title>
             {link && <SeeMore href={link}>Voir plus</SeeMore>}
             <Carousel ref={carouselRef}>
-                <CarouselWrapper amount={amount}>
+                <CarouselWrapper>
                     {articlesList}
                 </CarouselWrapper>
-                <GridSliderChevron direction="left" />
-                <GridSliderChevron direction="right" />
+                <GridSliderChevron direction="left" onClick={handleScrollLeft} />
+                <GridSliderChevron direction="right" onClick={handleScrollRight} />
             </Carousel>
-            <HorizontalScrollBar minWidth={getMinWidth()} setAmount={setAmount} />
         </Container>
     )
 }
