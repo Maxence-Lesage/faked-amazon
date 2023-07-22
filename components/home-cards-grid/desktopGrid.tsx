@@ -42,33 +42,33 @@ export default function DesktopGrid() {
 
     return (
         <Container>
-            <Card title="Offre star" />
-            <Card title="Les top catégories" />
-            <Card title="Idées cuisine et maison" />
-            <Card title="Identifiez-vous pour une meilleure expérience" />
-            <Card title="Barbecue et repas en extérieur" />
-            <Card title="Sélection de produits remis à neuf" />
-            <Card title="Découvrez nos produits fabriqués en France" />
-            <Card title="Visitez l'entrepôt robotisé d'Augny" />
-            <Card title="Mieux pour la planète - Renouvelé" />
+            <Card title="Offre star" number={4} />
+            <Card title="Les top catégories" number={2} />
+            <Card title="Idées cuisine et maison" number={1} />
+            <Card title="Identifiez-vous pour une meilleure expérience" number={1} />
+            <Card title="Barbecue et repas en extérieur" number={4} />
+            <Card title="Sélection de produits remis à neuf" number={1} />
+            <Card title="Découvrez nos produits fabriqués en France" number={4} />
+            <Card title="Visitez l'entrepôt robotisé d'Augny" number={4} />
+            <Card title="Mieux pour la planète - Renouvelé" number={1} />
             <GridSlider id={1} />
             <GridSlider id={2} />
-            <Card title="Caméra" />
-            <Card title="Puériculture" />
-            <Card title="Découvrez des marques émergentes" />
-            <Card title="Nouvelles marques" />
+            <Card title="Caméra" number={4} />
+            <Card title="Puériculture" number={4} />
+            <Card title="Découvrez des marques émergentes" number={1} />
+            <Card title="Nouvelles marques" number={4} />
             <GridSlider id={3} />
             <GridSlider id={4} />
-            <Card title="Jeux vidéo" />
-            <Card title="Régulièrement achetés dans Épicerie" />
-            <Card title="Bonnes affaires sur la mode" />
-            <Card title="High-tech" />
+            <Card title="Jeux vidéo" number={4} />
+            <Card title="Régulièrement achetés dans Épicerie" number={1} />
+            <Card title="Bonnes affaires sur la mode" number={4} />
+            <Card title="High-tech" number={4} />
             <GridSlider id={5} />
             <GridSlider id={6} />
-            <Card title="20% de réduction sur les produits d'occasion" />
-            <Card title="Jardin" />
-            <Card title="Tech" />
-            <Card title="Logiciels" />
+            <Card title="20% de réduction sur les produits d'occasion" number={4} />
+            <Card title="Jardin" number={1} />
+            <Card title="Tech" number={2} />
+            <Card title="Logiciels" number={4} />
             <GridSlider id={7} />
         </Container>
     )
