@@ -12,10 +12,13 @@ const Container = styled("div")<{ number: number }>(({ number }) => ({
     display: "grid",
     gridTemplateRows: 'auto 1fr auto',
     width: "auto",
+    maxWidth: "500px",
+    margin: "0px auto",
     minHeight: number !== 0 ? "420px" : "fit-content",
     height: number !== 0 ? "auto" : "fit-content",
     backgroundColor: "var(--color-light)",
     padding: "20px 20px 15px 20px",
+
 }))
 
 const Title = styled("h2")({
@@ -74,7 +77,7 @@ const Content4 = styled("div")({
     },
 })
 
-export default function Card({ title, number }: Props) {
+export default function PhoneCard({ title, number }: Props) {
 
     let content;
 

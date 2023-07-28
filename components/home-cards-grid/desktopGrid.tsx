@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 import Card from "../card/card";
-import Image, { ImageProps } from "next/image";
-import { apiGetSingleCategory } from "@/api/ressources";
 import GridSlider from "./grid_slider";
 
 const Container = styled("div")({
@@ -45,7 +43,7 @@ export default function DesktopGrid() {
             <Card title="Offre star" number={4} />
             <Card title="Les top catégories" number={2} />
             <Card title="Idées cuisine et maison" number={1} />
-            <Card title="Identifiez-vous pour une meilleure expérience" number={1} />
+            <Card title="Identifiez-vous pour une meilleure expérience" number={0} />
             <Card title="Barbecue et repas en extérieur" number={4} />
             <Card title="Sélection de produits remis à neuf" number={1} />
             <Card title="Découvrez nos produits fabriqués en France" number={4} />

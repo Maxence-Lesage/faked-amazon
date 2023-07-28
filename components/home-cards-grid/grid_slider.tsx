@@ -15,14 +15,14 @@ interface Ids {
     readonly 7: string,
 }
 
-const Container = styled("div")({
+const Container = styled("div")<{ type?: string }>(({ type }) => ({
     position: "relative",
     width: "100%",
     height: "fit-content",
-    backgroundColor: "var(--color-light)",
+    backgroundColor: !type ? "var(--color-light)" : "transparent",
     gridColumn: "1 / -1",
-    padding: "20px 20px 10px 20px",
-})
+    padding: !type ? "20px 20px 10px 20px" : "0px 0px 20px 0px",
+}))
 
 const Title = styled("h2")({
     display: "inline",
@@ -41,17 +41,17 @@ const SeeMore = styled(Link)({
     }
 })
 
-const Carousel = styled("div")({
+const Carousel = styled("div")<{ type?: string }>(({ type }) => ({
     height: "fit-content",
     width: "100%",
-    marginTop: "15px",
+    margin: "15px 10px 0px 10px",
     overflowX: "scroll",
     scrollBehavior: "smooth",
     "&:hover .grid-slider-chevron": {
         opacity: "0.8",
     },
     "&::-webkit-scrollbar": {
-        height: '7px',
+        height: '4px',
     },
 
     "&::-webkit-scrollbar-track": {
@@ -65,8 +65,11 @@ const Carousel = styled("div")({
     },
     "&:hover::-webkit-scrollbar-thumb": {
         backgroundColor: 'var(--color-dark)',
+    },
+    "& img": {
+        borderRadius: "6px",
     }
-})
+}))
 
 const CarouselWrapper = styled("div")({
     display: "flex",
@@ -74,7 +77,7 @@ const CarouselWrapper = styled("div")({
     width: "fit-content",
 })
 
-export default function GridSlider({ id }: { id: keyof Ids }) {
+export default function GridSlider({ id, type }: { id: keyof Ids, type?: "mini" }) {
 
     const carouselRef = useRef<HTMLDivElement>(null);
     const scrollAmount = 624;
@@ -84,7 +87,7 @@ export default function GridSlider({ id }: { id: keyof Ids }) {
     const link = data.link || null;
     const articles = data.articles;
     const articlesList = articles.map((article, id) => {
-        return <Link key={id} href={article.link}><Image key={id} src={"/" + article.src} alt={article.alt} width={200} height={200} /></Link>
+        return <Link key={id} href={article.link}><Image key={id} src={"/" + article.src} alt={article.alt} width={type === "mini" ? 130 : 200} height={type === "mini" ? 160 : 200} style={{ objectFit: 'cover' }} /></Link>
     })
 
     const handleScrollLeft = () => {
@@ -100,15 +103,17 @@ export default function GridSlider({ id }: { id: keyof Ids }) {
     };
 
     return (
-        <Container>
-            <Title>{title}</Title>
-            {link && <SeeMore href={link}>Voir plus</SeeMore>}
-            <Carousel ref={carouselRef}>
+        <Container type={type}>
+            {!type && <Title>{title}</Title>}
+            {link && !type && <SeeMore href={link}>Voir plus</SeeMore>}
+            <Carousel ref={carouselRef} type={type}>
                 <CarouselWrapper>
                     {articlesList}
                 </CarouselWrapper>
-                <GridSliderChevron direction="left" onClick={handleScrollLeft} />
-                <GridSliderChevron direction="right" onClick={handleScrollRight} />
+                {!type && <GridSliderChevron direction="left" onClick={handleScrollLeft} />
+                }
+                {!type && <GridSliderChevron direction="right" onClick={handleScrollRight} />
+                }
             </Carousel>
         </Container>
     )
