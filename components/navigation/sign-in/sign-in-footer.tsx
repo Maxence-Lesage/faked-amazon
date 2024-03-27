@@ -52,7 +52,7 @@ export default function SignInFooter() {
                 <List>
                     <li>
                         <Link href={"/"}>
-                            <p>Conditions d&apos;'utilisation</p>
+                            <p>Conditions d utilisation</p>
                         </Link>
                     </li>
                     <li>
@@ -72,7 +72,7 @@ export default function SignInFooter() {
                     </li>
                     <li>
                         <Link href={"/"}>
-                            <p>Annonces basées sur vos centres d&apos;'intérêt</p>
+                            <p>Annonces basées sur vos centres d intérêt</p>
                         </Link>
                     </li>
                 </List>

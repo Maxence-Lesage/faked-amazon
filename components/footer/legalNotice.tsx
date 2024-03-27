@@ -74,7 +74,7 @@ export default function LegalNotice() {
                 </li>
                 <li>
                     <Link href={"/"}>
-                        <p>Annonces basées sur vos centres d&apos;'intérêt</p>
+                        <p>Annonces basées sur vos centres d intérêt</p>
                     </Link>
                 </li>
                 <li>

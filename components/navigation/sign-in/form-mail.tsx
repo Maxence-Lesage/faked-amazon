@@ -95,7 +95,7 @@ const Help = styled('div')({
 export default function FormMail() {
     return (
         <FormContainer>
-            <Title>S&apos;'identifier</Title>
+            <Title>S identifier</Title>
             <Form>
                 <Label htmlFor="email">Adresse e-mail ou numéro de téléphone portable</Label>
                 <Input type="text" name="email" id="email" />
@@ -103,14 +103,14 @@ export default function FormMail() {
             </Form>
             <Text>
                 En passant votre commande, vous acceptez les
-                <SpanLink href={"/"}> Conditions générales de vente </SpanLink>d&apos;'Amazon.
+                <SpanLink href={"/"}> Conditions générales de vente </SpanLink>d Amazon.
                 Veuillez consulter notre <SpanLink href={"/"}> Notice Protection de vos informations personnelles</SpanLink>,
                 notre <SpanLink href={"/"}>Notice Cookies</SpanLink> et notre <SpanLink href={"/"}>Notice Annonces publicitaires
-                    basées sur vos centres d&apos;'intérêt</SpanLink>.
+                    basées sur vos centres d intérêt</SpanLink>.
             </Text>
             <Help>
                 <FontAwesomeIcon icon={faCaretRight} />
-                <p>Avez-vous besoin d&apos;'aide ?</p>
+                <p>Avez-vous besoin d aide ?</p>
             </Help>
         </FormContainer>
     )
