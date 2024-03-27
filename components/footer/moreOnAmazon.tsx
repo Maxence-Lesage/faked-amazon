@@ -85,7 +85,7 @@ export default function MoreOnAmazon() {
                     <Item>
                         <Link href={"/"}>
                             <h2>Amazon Seconde main</h2>
-                            <p>Produits d'occasion ou emballage ouvert</p>
+                            <p>Produits d&apos;'occasion ou emballage ouvert</p>
                         </Link>
                     </Item>
                     <Separator />

@@ -84,7 +84,7 @@ export default function Presentation() {
                 <Section>
                     <SectionTitle>Pour mieux nous connaître</SectionTitle>
                     <UnorderedList>
-                        <li><Link href={"/"}>À propos d'Amazon</Link></li>
+                        <li><Link href={"/"}>À propos d&apos;'Amazon</Link></li>
                         <li><Link href={"/"}>Carrières</Link></li>
                         <li><Link href={"/"}>Durabilité</Link></li>
                         <li><Link href={"/"}>Amazon Science</Link></li>
@@ -92,7 +92,7 @@ export default function Presentation() {
                 </Section>
                 <Separator />
                 <Section>
-                    <SectionTitle>Gagnez de l'argent</SectionTitle>
+                    <SectionTitle>Gagnez de l&apos;'argent</SectionTitle>
                     <UnorderedList>
                         <li><Link href={"/"}>Vendez sur Amazon</Link></li>
                         <li><Link href={"/"}>Vendez sur Amazon Business</Link></li>
@@ -102,7 +102,7 @@ export default function Presentation() {
                         <li><Link href={"/"}>Faites la promotion de vos produits</Link></li>
                         <li><Link href={"/"}>Auto-publiez votre livre</Link></li>
                         <li><Link href={"/"}>Amazon Pay</Link></li>
-                        <li><Link href={"/"}>Voir plus : Gagner de l'argent avec nous</Link></li>
+                        <li><Link href={"/"}>Voir plus : Gagner de l&apos;'argent avec nous</Link></li>
                     </UnorderedList>
                 </Section>
                 <Separator />
@@ -120,7 +120,7 @@ export default function Presentation() {
                 </Section>
                 <Separator />
                 <Section>
-                    <SectionTitle>Besoin d'aide ?</SectionTitle>
+                    <SectionTitle>Besoin d&apos;'aide ?</SectionTitle>
                     <UnorderedList>
                         <li><Link href={"/"}>Voir ou suivre vos commandes</Link></li>
                         <li><Link href={"/"}>Tarifs et options de livraison</Link></li>
@@ -179,7 +179,7 @@ export default function Presentation() {
                     <Link href={"/"}>Gérer vos abonnements</Link>
                 </SmallScreenLink>
                 <SmallScreenLink>
-                    <Link href={"/"}>Télécharger l'application Amazon</Link>
+                    <Link href={"/"}>Télécharger l&apos;'application Amazon</Link>
                 </SmallScreenLink>
                 <SmallScreenLink>
                     <Link href={"/"}>Coordonnées 1-Click</Link>
