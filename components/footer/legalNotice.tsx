@@ -54,31 +54,31 @@ export default function LegalNotice() {
             <List>
                 <li>
                     <Link href={"/"}>
-                        Conditions générales de vente
+                        <p>Conditions générales de vente</p>
                     </Link>
                 </li>
                 <li>
                     <Link href={"/"}>
-                        Conditions de participation au programme Marketplace
+                        <p>Conditions de participation au programme Marketplace</p>
                     </Link>
                 </li>
                 <li>
                     <Link href={"/"}>
-                        Vos informations personnelles
+                        <p>Vos informations personnelles</p>
                     </Link>
                 </li>
                 <li>
                     <Link href={"/"}>
-                        Cookies
+                        <p>Cookies</p>
                     </Link>
                 </li>
                 <li>
                     <Link href={"/"}>
-                        Annonces basées sur vos centres d'intérêt
+                        <p>Annonces basées sur vos centres d'intérêt</p>
                     </Link>
                 </li>
                 <li>
-                    © 1996-2023, Amazon.com Inc. <CopyRightSpan>ou ses affiliés</CopyRightSpan>
+                    <p>© 1996-2023, Amazon.com Inc. <CopyRightSpan>ou ses affiliés</CopyRightSpan></p>
                 </li>
             </List>
         </Container>

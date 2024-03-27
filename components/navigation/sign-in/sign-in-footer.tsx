@@ -7,7 +7,7 @@ const Separator = styled('div')({
     height: '44px',
     background: 'linear-gradient(to bottom,rgba(0,0,0,.14),rgba(0,0,0,.03) 3px,transparent)',
     "&::after": {
-        content: '""',
+        content: '',
         display: 'block',
         height: '44px',
         background: 'linear-gradient(to right,#fff,rgba(255,255,255,0),#fff)',
@@ -52,32 +52,32 @@ export default function SignInFooter() {
                 <List>
                     <li>
                         <Link href={"/"}>
-                            Conditions d'utilisation
+                            <p>Conditions d'utilisation</p>
                         </Link>
                     </li>
                     <li>
                         <Link href={"/"}>
-                            Protection de vos informations personnelles
+                            <p>Protection de vos informations personnelles</p>
                         </Link>
                     </li>
                     <li>
                         <Link href={"/"}>
-                            Aide
+                            <p>Aide</p>
                         </Link>
                     </li>
                     <li>
                         <Link href={"/"}>
-                            Cookies
+                            <p>Cookies</p>
                         </Link>
                     </li>
                     <li>
                         <Link href={"/"}>
-                            Annonces basées sur vos centres d'intérêt
+                            <p>Annonces basées sur vos centres d'intérêt</p>
                         </Link>
                     </li>
                 </List>
                 <Copyright>
-                    © 1996-2023, Amazon.com Inc. ou ses affiliés
+                    <p>© 1996-2023, Amazon.com Inc. ou ses affiliés</p>
                 </Copyright>
             </Container>
         </>

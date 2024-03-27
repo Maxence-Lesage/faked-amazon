@@ -110,7 +110,7 @@ export default function FormMail() {
             </Text>
             <Help>
                 <FontAwesomeIcon icon={faCaretRight} />
-                Avez-vous besoin d'aide ?
+                <p>Avez-vous besoin d'aide ?</p>
             </Help>
         </FormContainer>
     )
